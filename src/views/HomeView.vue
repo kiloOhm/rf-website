@@ -1,11 +1,18 @@
 <script setup lang="ts">
+import { Suspense } from "vue";
+import UnderConstruction from "../components/under-construction.vue";
+
 </script>
 
 <template>
   <div class="HomeView">
     <main>
-      <img alt="logo" class="logo" src="@/assets/RF_Logo_Vector.svg" width="400" height="400" />
-      <h1><b>Under construction...</b></h1>
+      <Suspense>
+        <UnderConstruction />
+        <template #fallback>
+          Loading...
+        </template>
+      </Suspense>
     </main>
   </div>
 </template>
@@ -23,10 +30,5 @@
 
   main {
     grid-area: main;
-    display: grid;
-    justify-content: center;
-    justify-items: center;
-    align-content: center;
-    font-size: 50px;
   }
 </style>
