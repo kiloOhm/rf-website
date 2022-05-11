@@ -1,18 +1,32 @@
+<script setup lang="ts">
+</script>
+
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <div class="HomeView">
+    <main>
+      <img alt="logo" class="logo" src="@/assets/RF_Logo_Vector.svg" width="400" height="400" />
+      <h1><b>Under construction...</b></h1>
+    </main>
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+<style scoped>
+  .HomeView {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template: 
+    ". . ." 1fr
+    ". main ." max-content
+    ". . ." 1fr / 1fr max-content 1fr;
+  }
 
-export default defineComponent({
-  name: 'HomeView',
-  components: {
-    HelloWorld,
-  },
-});
-</script>
+  main {
+    grid-area: main;
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
+    font-size: 50px;
+  }
+</style>
