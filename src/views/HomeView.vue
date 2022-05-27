@@ -8,6 +8,7 @@ import UnderConstruction from "../components/under-construction.vue";
   <div class="HomeView">
     <main>
       <Suspense>
+        <p>TEST</p>
         <UnderConstruction />
         <template #fallback>
           Loading...
