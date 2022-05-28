@@ -47,6 +47,19 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+body:after {
+  background-image: url(https://files.facepunch.com/garry/1b1011b1/test.png?1=);
+  content: " ";
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 500;
+  pointer-events: none;
+  opacity: .6;
+}
+
 ::-webkit-scrollbar {
   width: 10px;
 }

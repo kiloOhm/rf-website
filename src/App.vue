@@ -159,7 +159,6 @@ main {
   overflow: auto;
 }
 
-
 .logo {
   grid-area: l;
   box-sizing: border-box;
