@@ -1,19 +1,15 @@
 <script setup lang="ts">
-import axios from 'axios';
 
-const props = defineProps({
-  url: {
-    type: String,
-    required: true
-  }
-})
+interface Props {
+  markdown: string
+}
+const props = defineProps<Props>()
 
-const { data } = await axios.get(props.url);
 </script>
 
 <template>
   <div class="markdown">
-    <VueShowdown :markdown="data" />
+    <VueShowdown :markdown="props.markdown" />
   </div>
 </template>
 

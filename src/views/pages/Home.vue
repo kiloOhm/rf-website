@@ -51,13 +51,15 @@
 
 <style scoped>
   .home {
-    height: 100%;
+    height: 80vh;
     width: 100%;
     display: grid;
     grid-template: 
-    "." 1fr
+    "." 2fr
     "t" max-content
+    "." .2fr
     "s" max-content
+    "." .5fr
     "a" max-content
     "." 3fr / 100%;
     justify-items: center;
@@ -83,7 +85,6 @@
   }
 
   .actions {
-    margin-top: 5%;
     padding: 0 5em 0 5em;
     width: 100%;
     grid-area: a;

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { RouterView, useRouter } from "vue-router";
-import { ref, Suspense, watch } from "vue";
+import { useRouter } from "vue-router";
+import { h, nextTick, ref, Suspense, watch } from "vue";
 import rfLoading from "@/components/elements/rf-loading.vue";
 import { 
   NConfigProvider, 
@@ -14,7 +14,10 @@ import NavMenu from './components/navMenu.vue'
 import type { navItem } from  './components/navMenu.vue'
 import { computed } from "@vue/reactivity";
 import scrollToTop from "./components/elements/scroll-to-top.vue";
-
+import Home from "./views/pages/Home.vue";
+import Pages from "./views/Pages.vue";
+import { throttle } from 'lodash';
+import Plugins from "./views/pages/Plugins.vue";
 
 const expandNav = ref(false);
 const toggleExpandNav = () => {
@@ -23,40 +26,49 @@ const toggleExpandNav = () => {
 }
 const textColor = getComputedStyle(document.documentElement).getPropertyValue('--text');
 
-const navItems = ref<navItem[]>([
+const pages = ref<navItem[]>([
   {
     title: 'Home',
     key: 'home',
+    component: h(Home)
   },
   {
     title: 'Rules',
     key: 'rules',
+    component: h(Home)
   },
   {
     title: 'Media',
     key: 'media',
+    component: h(Home)
   },
   {
     title: 'Plugins',
     key: 'plugins',
+    component: h(Plugins)
   },
   {
     title: 'Donate',
     key: 'donate',
+    component: h(Home)
   },
   {
     title: 'Contact',
     key: 'contact',
+    component: h(Home)
   }
 ])
 const router = useRouter()
-const activeItem = ref('home');
-watch(activeItem, (newValue, oldValue) => {
+let init = false;
+watch(router.currentRoute, (newValue) => {
+  if(init) return;
+  init = true;
+  pagesRef.value?.scrollTo(newValue.path.substring(1));
+})
+const activePage = ref('home');
+watch(activePage, (newValue, oldValue) => {
   if(expandNav.value) {
-  setTimeout(() => {
     expandNav.value = false;
-    router.push(('/' + newValue))
-  }, 100)
   }
 });
 const page = computed(() => {
@@ -65,6 +77,20 @@ const page = computed(() => {
 watch(page, (newValue) => {
   console.log(newValue);
 })
+const scrollContainer = () => document.getElementById('scroll-container');
+const scrollTopAmount = ref(0);
+const setScrollTopAmount = throttle((amount) => {
+  scrollTopAmount.value = amount;
+}, 200);
+nextTick(() => {
+  scrollContainer()?.addEventListener('scroll', function(e) {
+    setScrollTopAmount(this.scrollTop);
+  })
+})
+const showScrollToTop = computed(() => {
+  return scrollTopAmount.value > window.innerHeight / 2;
+})
+const pagesRef = ref();
 </script>
 
 <template>
@@ -85,8 +111,9 @@ watch(page, (newValue) => {
               </div>
               <div class="nav">
                 <nav-menu 
-                  v-model:active="activeItem"
-                  :items="navItems"
+                  :active="activePage"
+                  @update:active="(page) => pagesRef.scrollTo(page)"
+                  :items="pages"
                   gap="2em"
                 />
               </div>
@@ -96,28 +123,29 @@ watch(page, (newValue) => {
             <n-collapse-transition :show="expandNav">            
               <div class="nav-menu">
                 <nav-menu 
-                  v-model:active="activeItem"
+                  :active="activePage"
+                  @update:active="(page) => pagesRef.scrollTo(page)"
                   vertical
-                  :items="navItems"
+                  :items="pages"
                 />
               </div>
             </n-collapse-transition>
             <div id="scroll-container">              
-                <Suspense>
-                  <router-view v-slot="{ Component }">
-                    <transition name="fade">
-                      <component :is="Component" />
-                    </transition>
-                  </router-view>
-                  <template #fallback>
-                    <rf-loading />
-                  </template>
-                </Suspense>
-              </div>
-              <scroll-to-top
-                target="scroll-container"
+              <Pages
+                ref="pagesRef"
+                :pages="pages"
+                scroll-container="scroll-container"
+                v-model:active-page="activePage"
+                :scroll-height="scrollTopAmount"
               />
             </div>
+            <Transition>
+              <scroll-to-top
+                v-if="showScrollToTop"
+                target="scroll-container"
+              />
+            </Transition>
+          </div>
         </main>
       </n-notification-provider>
     <!-- </n-theme-editor> -->
@@ -133,12 +161,14 @@ watch(page, (newValue) => {
 main {
   width: 100%;
   height: 100vh;
-  display: table;
+  display: grid;
+  grid-template: 
+  "h" 90px
+  "c" calc(100vh - 90px) / 1fr;
 }
 
 .header-container {
-  display: table-row;
-  height: 0px;
+  grid-area: h;
 }
 
 .header {
@@ -150,8 +180,7 @@ main {
 }
 
 .content {
-  display: table-cell;
-  height: 100%;
+  grid-area: c;
 }
 
 #scroll-container {
@@ -167,8 +196,8 @@ main {
 .sandwich {
   grid-area: n;
   display: block;
-  width: 3em;
-  height: 3em;
+  width: 2em;
+  height: 1.5em;
 }
 
 .nav {
@@ -198,4 +227,13 @@ main {
   }
 }
 
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
 </style>

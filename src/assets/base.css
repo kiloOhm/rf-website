@@ -2,6 +2,7 @@
 
 :root {
   --bg1: #151413;
+  --bg1-zebra: #1b1b1b;
   --bg2: #242424;
   --bg3: #4C4946;
   --accent-dark: #B83A27;
@@ -35,10 +36,13 @@ html, body {
   height: 100vh;
 }
 
+html {
+  background: var(--bg1);
+  transition: background-color .2s ease;
+}
+
 body {
   color: var(--text);
-  background: var(--bg1);
-  transition: color 0.5s, background-color 0.5s;
   line-height: 1.6;
   font-family: 'Roboto Condensed', sans-serif;
   font-size: 15px;
@@ -61,15 +65,15 @@ body:after {
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 0;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg1);
+  background: transparent;
 }
 
 ::-webkit-scrollbar-corner {
-  background: var(--bg1);
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {

@@ -51,24 +51,24 @@ const _class = computed(() => {
 
 ._top, ._mid, ._bot {
   width: 100%;
-  height: 12%;
+  height: 2px;
   transition: transform .2s ease-in;
 }
 
 .right.active ._top, .top.active ._top, .bottom.active ._top
 {
-  transform: translate(20%, 100%) rotate(45deg);
+  transform: translateX(20%) rotate(45deg);
 }
 .right.active ._bot, .top.active ._bot, .bottom.active ._bot
 {
-  transform: translate(20%, -100%) rotate(-45deg);
+  transform: translateX(20%) rotate(-45deg);
 }
 .left.active ._top
 {
-  transform: translate(-20%, 100%) rotate(-45deg);
+  transform: translateX(-20%) rotate(-45deg);
 }
 .left.active ._bot
 {
-  transform: translate(-20%, -100%) rotate(45deg);
+  transform: translateX(-20%) rotate(45deg);
 }
 </style>

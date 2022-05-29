@@ -1,31 +1,29 @@
 <script setup lang="ts">
-import { computed, ref, toRefs, watch } from 'vue';
+import { computed, ref, toRefs, watch, type VNode } from 'vue';
 import type { CSSProperties } from 'vue';
 
 export interface navItem {
   title: string;
   key: string;
+  component?: VNode,
   onActivate?: (key: string) => void
 }
 interface Props {
   vertical?: boolean;
   items: navItem[];
   gap?: string;
-  active?: string;
+  active: string;
 }
 const props = defineProps<Props>();
-const emit = defineEmits(['update:active'])
-const active = ref(props.active)
-watch(active, (newValue) => {
-  emit('update:active', newValue);
-});
+const emit = defineEmits(['update:active']);
+const { active } = toRefs(props);
 const style = computed(() => ({
   flexDirection: props.vertical ? 'column' : 'row',
   columnGap: props.vertical ? '' : props.gap ?? '1em',
   rowGap: props.vertical ? props.gap ?? '1em' : '',
 } as CSSProperties))
 const select = (item: navItem) => {
-  active.value = item.key;
+  emit('update:active', item.key);
   item.onActivate?.(item.key);
 }
 </script>
