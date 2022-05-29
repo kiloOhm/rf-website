@@ -92,7 +92,7 @@ const direction = (i: number) => (i % 2) == 0 ? 'left' : 'right';
 <style scoped>
 
 .plugins {
-  padding: 1em 4em 1em 4em;
+  padding: 1em 6em 1em 6em;
 }
 
 .plugin {
@@ -102,7 +102,7 @@ const direction = (i: number) => (i % 2) == 0 ? 'left' : 'right';
 .desktop {
   display: flex;
   flex-wrap: nowrap;
-  gap: 1em;
+  gap: 1.5em;
 }
 
 .mobile {
@@ -154,7 +154,7 @@ const direction = (i: number) => (i % 2) == 0 ? 'left' : 'right';
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1em;
+  gap: 1.5em;
 }
 
 .title {
