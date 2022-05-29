@@ -93,10 +93,12 @@ const direction = (i: number) => (i % 2) == 0 ? 'left' : 'right';
 
 .plugins {
   padding: 1em 6em 1em 6em;
+  max-width: 1920px;
+  margin: auto;
 }
 
 .plugin {
-  padding: 1em 0 1em 0;
+  padding: 2em 0 2em 0;
 }
 
 .desktop {
