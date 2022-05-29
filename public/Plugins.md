@@ -6,7 +6,9 @@ Allows players to create groups that will authorize added members for things suc
 Click Here for Commands (Pop up)
 
 Available on:
-RustFactions.io Roleplay (Connect 2 server link)
+
+RustFactions.io Roleplay [Connect](./home)
+
 RustFactions.io Vanilla
 
 # Conquest
@@ -18,7 +20,9 @@ Click Here for Commands (Pop up)
 
 
 Available on:
+
 RustFactions.io Roleplay
+
 RustFactions.io Vanilla
 
 # Plugin 3
@@ -30,5 +34,7 @@ Click Here for Commands (Pop up)
 
 
 Available on:
+
 RustFactions.io Roleplay
+
 RustFactions.io Vanilla

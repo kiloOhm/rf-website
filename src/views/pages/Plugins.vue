@@ -197,4 +197,12 @@ const direction = (i: number) => (i % 2) == 0 ? 'left' : 'right';
   width: min-content;
 } 
 
+.text :deep() a {
+  color: var(--text-dark);
+  transition: color .2s ease;
+}
+.text :deep() a:hover {
+  color: var(--accent-dark);
+}
+
 </style>
