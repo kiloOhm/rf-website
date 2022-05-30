@@ -5,8 +5,8 @@ import { NCarousel, NCard, NCarouselItem, NIcon } from 'naive-ui';
 import { ref } from 'vue';
 import { PauseOutline } from '@vicons/ionicons5';
 
-const index = (await axios.get('/media/index.txt'))?.data?.replaceAll('\r', '') as string;
-const lines = index.split('\n').filter((l) => l).map((l) => l.slice(2, l.length));
+const index = (await axios.get('/media/index.txt'))?.data?.replaceAll('\r', '').replaceAll('public/media/', '') as string;
+const lines = index.split('\n').filter((l) => l);
 interface slider {
   title: string,
   images: string[]
@@ -19,6 +19,7 @@ const sliders = Object.keys(slidersRaw).map((k) => ({
   title: k.replaceAll('/', ' '),
   images: slidersRaw[k].map((s) => '/media/' + s)
 } as slider))
+console.log(sliders);
 const carouselRefs = ref()
 const randomInterval = (callback: () => void) => {
   var min = 2000,

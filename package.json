@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite --host",
-    "index": "cd public/media && find . -regextype posix-egrep -regex \".*\\.(png|jpg|jpeg)$\" > index.txt",
-    "build": "vue-tsc --noEmit && vite build && npm run index",
+    "index": "find public/media -regextype posix-egrep -regex \".*\\.(png|jpg|jpeg)$\" > public/media/index.txt",
+    "build": "npm run index && vue-tsc --noEmit && vite build",
     "preview": "vite preview --port 5050",
     "typecheck": "vue-tsc --noEmit",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
