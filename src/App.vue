@@ -22,6 +22,8 @@ import Rules from "./views/pages/Rules.vue";
 import Media from "./views/pages/Media.vue";
 import Donate from "./views/pages/Donate.vue";
 import Contact from "./views/pages/Contact.vue";
+import Modals from "./components/modals.vue";
+import { themeOverrides } from "./assets/themeOverrides";
 
 const expandNav = ref(false);
 const toggleExpandNav = () => {
@@ -38,36 +40,39 @@ const pages = ref<navItem[]>([
   },
   {
     title: 'Rules',
+    header: 'Rules',
     key: 'rules',
     component: h(Rules)
   },
   {
     title: 'Media',
+    header: 'Media',
     key: 'media',
     component: h(Media)
   },
   {
     title: 'Plugins',
+    header: 'Plugins',
     key: 'plugins',
     component: h(Plugins)
   },
   {
     title: 'Donate',
+    header: 'Donate',
     key: 'donate',
     component: h(Donate)
   },
   {
     title: 'Contact',
+    header: 'Contact',
     key: 'contact',
     component: h(Contact)
   }
 ])
 const router = useRouter()
-let init = false;
 watch(router.currentRoute, (newValue) => {
-  if(init) return;
-  init = true;
-  pagesRef.value?.scrollTo(newValue.path.substring(1));
+  if(pagesRef.value.scrollPush()) return;
+  pagesRef.value?.scrollTo(newValue.params.page);
 })
 const activePage = ref('home');
 watch(activePage, (newValue, oldValue) => {
@@ -77,9 +82,6 @@ watch(activePage, (newValue, oldValue) => {
 });
 const page = computed(() => {
   return router.currentRoute.value.params['page'];
-})
-watch(page, (newValue) => {
-  console.log(newValue);
 })
 const scrollContainer = () => document.getElementById('scroll-container');
 const scrollTopAmount = ref(0);
@@ -95,13 +97,27 @@ const showScrollToTop = computed(() => {
   return scrollTopAmount.value > window.innerHeight / 2;
 })
 const pagesRef = ref();
+document.addEventListener('click', (e) => {
+  const link = (e.target as HTMLElement)?.closest('a')?.href;
+  if(!link) return;
+  const url = new URL(link);
+  if(url.host != window.location.host) return;
+  e.preventDefault();
+  router.push(url.pathname);
+});
 </script>
 
 <template>
-  <n-config-provider :theme="darkTheme">
+  <n-config-provider 
+    :theme="darkTheme"
+    :theme-overrides="themeOverrides"
+  >
     <!-- <n-theme-editor> -->
       <n-notification-provider>
         <main>
+          <Suspense>
+            <Modals/>
+          </Suspense>
           <div class="header-container">
             <div class="header">
               <img alt="logo" class="logo" src="@/assets/RF_Logo_Vector.svg" />

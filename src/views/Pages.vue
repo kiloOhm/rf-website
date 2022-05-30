@@ -19,14 +19,22 @@ const pageRefs = ref();
 const scrollContainer = () => document.getElementById(props.scrollContainer);
 const getPageIndex = (key: string) => pages.value.findIndex((p) => p.key == key);
 const getPage = (key: string) => pageRefs.value[getPageIndex(key)] as HTMLElement
+const scrollPushed = ref(false);
 defineExpose({
   scrollTo: (newValue) => {
     const ref = getPage(newValue);
     if(!ref) return;
     scrollContainer()?.scrollTo({
       top: ref.offsetTop,
-      behavior: 'smooth'
+      behavior: 'smooth',
     })
+  },
+  scrollPush: () => {
+    if(scrollPushed.value) {
+      scrollPushed.value = false;
+      return true;
+    }
+    return false;
   }
 })
 watch(scrollHeight, (height) => {
@@ -37,6 +45,7 @@ watch(scrollHeight, (height) => {
       if(activePage.value != page.key) {
         emit('update:activePage', page.key);
         router.push('/' + page.key);
+        scrollPushed.value = true;
       }
       return;
     }
@@ -63,7 +72,16 @@ const bg = (i: number) => {
         :color="bg1Zebra"
         :flip="(index % 2) == 0"
       />
-      <div :style="bg(index)" >
+      <div
+        class="content"
+        :style="bg(index)" 
+      >
+        <div
+          v-if="page.header"
+          class="header"
+        >
+          {{ page.header }}
+        </div>
         <Suspense>
           <component 
             :is="page.component" 
@@ -82,6 +100,14 @@ const bg = (i: number) => {
 .pages {
   width: 100%;
   height: 100%;
+}
+
+.content .header {
+  color: var(--text-dark);
+  font-size: 3em;
+  font-weight: 700;
+  opacity: .2;
+  z-index: 2;
 }
 
 </style>

@@ -8,6 +8,18 @@ const router = createRouter({
       path: '/:pathMatch(.*)',
       name: 'home',
       component: App
+    },
+    {
+      path: '/:page',
+      name: 'pages',
+      component: App,
+      children: [
+        {
+          path: 'modal/:modal',
+          name: 'rules',
+          component: App
+        },
+      ]
     }
   ]
 })

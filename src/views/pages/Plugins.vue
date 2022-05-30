@@ -4,7 +4,7 @@ import { reactive } from 'vue';
 import RenderMarkdown from '../../components/render-markdown.vue';
 import { NCollapseTransition, NIcon } from 'naive-ui';
 import { CaretDownOutline } from '@vicons/ionicons5';
-const pluginsMD = (await axios.get('./Plugins.md')).data as string;
+const pluginsMD = (await axios.get('/Plugins.md')).data as string;
 interface pluginInfo {
   title: string;
   image: string;
@@ -95,10 +95,9 @@ const direction = (i: number) => (i % 2) == 0 ? 'left' : 'right';
   padding: 1em 6em 1em 6em;
   max-width: 1920px;
   margin: auto;
-}
-
-.plugin {
-  padding: 2em 0 2em 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3em;
 }
 
 .desktop {
@@ -117,7 +116,7 @@ const direction = (i: number) => (i % 2) == 0 ? 'left' : 'right';
 
 .mobile .title {
   display: grid;
-  grid-template-columns: 1fr 5fr;
+  grid-template-columns: 1fr 5fr 1fr;
   align-items: center;
   justify-items: center;
 }
@@ -135,6 +134,9 @@ const direction = (i: number) => (i % 2) == 0 ? 'left' : 'right';
   }
   .desktop {
     display: none;
+  }
+  .plugins {
+    gap: 1em;
   }
 }
 @media only screen and (min-width: 600px) {
@@ -166,7 +168,9 @@ const direction = (i: number) => (i % 2) == 0 ? 'left' : 'right';
 }
 
 .title :deep() h1 {
+  padding: .2em 0 .2em 0;
   font-size: 2.5em;
+  line-height: 1.2;
 }
 
 .desktop .image :deep() img {
@@ -176,9 +180,7 @@ const direction = (i: number) => (i % 2) == 0 ? 'left' : 'right';
 }
 
 .mobile .image :deep() img {
-  width: 100%;
   max-height: 20em;
-  object-fit: contain;
 }
 
 .text {
@@ -188,21 +190,8 @@ const direction = (i: number) => (i % 2) == 0 ? 'left' : 'right';
   width: 100%;
 }
 
-.text :deep() p {
-  font-size: x-large;
-  font-weight: 700;
-}
-
 .plugin .markdown div {
   width: min-content;
 } 
-
-.text :deep() a {
-  color: var(--text-dark);
-  transition: color .2s ease;
-}
-.text :deep() a:hover {
-  color: var(--accent-dark);
-}
 
 </style>

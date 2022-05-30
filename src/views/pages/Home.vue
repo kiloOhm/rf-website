@@ -2,6 +2,7 @@
   import VueWriter from 'vue-writer';
   import pButton from '@/components/elements/p-button.vue';
   import sButton from '@/components/elements/s-button.vue';
+import { useRouter } from 'vue-router';
 
   const subtitles = [
     'Waking up on the beach...',
@@ -18,6 +19,8 @@
     'Participating in an experiment...',
     'Losing consciousness...'
   ]
+
+  const router = useRouter();
 </script>
 
 <template>
@@ -46,12 +49,18 @@
     </div>
     <div class="actions">
       <p-button
-        type="primary"
+        class="connect-btn"
       >
         Connect
       </p-button>
+      <p-button
+        class="contact-btn"
+        @click="router.push('/contact')"
+      >
+        Contact
+      </p-button>
       <s-button
-        type="tertiary"
+        @click="router.push('/donate')"
       >
         Donate
       </s-button>
@@ -140,5 +149,16 @@
     height: 105%;
     background-color: #00000088;
     z-index: 0;
+  }
+
+  @media only screen and (min-width: 600px) {
+    .contact-btn {
+      display: none;
+    }
+  }
+  @media only screen and (max-width: 600px) {
+    .connect-btn {
+      display: none;
+    }
   }
 </style>

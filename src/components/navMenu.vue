@@ -4,6 +4,7 @@ import type { CSSProperties } from 'vue';
 
 export interface navItem {
   title: string;
+  header?: string;
   key: string;
   component?: VNode,
   onActivate?: (key: string) => void
