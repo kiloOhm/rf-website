@@ -22,6 +22,14 @@
 
 <template>
   <div class="home">
+    <div class="overlay"></div>
+    <video 
+      src="../../../public/WebsiteMainPageBackground.mp4"
+      autoplay
+      muted
+      loop
+      class="bg-video"
+    ></video>
     <div class="title">
       <p>Rust Factions</p>
     </div>
@@ -30,7 +38,7 @@
         class="text"
         :array="subtitles"
         :typeSpeed="50"
-        :delay="5000"
+        :delay="2000"
         :eraseSpeed="25"
       />
     </div>
@@ -71,6 +79,7 @@
     font-weight: 700;
     line-height: 1;
     padding: 0 5% 0 5%;
+    text-shadow: 1px 1px 1px #00000066;
   }
 
   .subtitle {
@@ -82,6 +91,7 @@
     font-weight: 700;
     color: var(--text-dark);
     text-align: center;
+    text-shadow: 1px 1px 1px #00000066;
   }
 
   .actions {
@@ -93,5 +103,20 @@
     justify-content: center;
     flex-wrap: wrap;
     gap: 1em;
+  }
+
+  .bg-video {
+    position: absolute;
+    object-fit: cover;
+    z-index: -1;
+    filter: blur(10px);
+  }
+
+  .overlay {
+    position: absolute;
+    width: 110%;
+    height: 110%;
+    background-color: #00000088;
+    z-index: 0;
   }
 </style>

@@ -25,7 +25,7 @@ RustFactions.io Roleplay
 
 RustFactions.io Vanilla
 
-# Plugin 3
+# Plugin 3 THIS IS A VERY LONG TITLE
 ![harold](./harold.jpeg)
 
 Allows players to create groups that will authorize added members for things such as code locks, building privilege and auto turrets.

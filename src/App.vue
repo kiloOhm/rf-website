@@ -18,6 +18,10 @@ import Home from "./views/pages/Home.vue";
 import Pages from "./views/Pages.vue";
 import { throttle } from 'lodash';
 import Plugins from "./views/pages/Plugins.vue";
+import Rules from "./views/pages/Rules.vue";
+import Media from "./views/pages/Media.vue";
+import Donate from "./views/pages/Donate.vue";
+import Contact from "./views/pages/Contact.vue";
 
 const expandNav = ref(false);
 const toggleExpandNav = () => {
@@ -35,12 +39,12 @@ const pages = ref<navItem[]>([
   {
     title: 'Rules',
     key: 'rules',
-    component: h(Home)
+    component: h(Rules)
   },
   {
     title: 'Media',
     key: 'media',
-    component: h(Home)
+    component: h(Media)
   },
   {
     title: 'Plugins',
@@ -50,12 +54,12 @@ const pages = ref<navItem[]>([
   {
     title: 'Donate',
     key: 'donate',
-    component: h(Home)
+    component: h(Donate)
   },
   {
     title: 'Contact',
     key: 'contact',
-    component: h(Home)
+    component: h(Contact)
   }
 ])
 const router = useRouter()

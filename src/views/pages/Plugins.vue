@@ -170,8 +170,8 @@ const direction = (i: number) => (i % 2) == 0 ? 'left' : 'right';
 }
 
 .desktop .image :deep() img {
-  width: 20em;
-  max-height: 20em;
+  max-width: 300px;
+  max-height: 300px;
   object-fit: contain;
 }
 
