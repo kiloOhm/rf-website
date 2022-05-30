@@ -1,26 +1,16 @@
 <script setup lang="ts">
-import Markdown from 'vue3-markdown-it';
-import emojis from 'markdown-it-emoji';
-import icons from 'markdown-it-icons';
-import subscript from 'markdown-it-sub';
-import superscript from 'markdown-it-sup';
-import taskLists from 'markdown-it-task-lists';
-const plugins = [emojis, icons, subscript, superscript, taskLists].map((plugin) => ({plugin}));
+import  { markdown } from '../util/markdown';
 
 interface Props {
   markdown: string
 }
 const props = defineProps<Props>()
-
+const html = await markdown(props.markdown);
 </script>
 
 <template>
   <div class="markdown">
-    <Markdown 
-      :source="props.markdown" 
-      :plugins="plugins" 
-      html
-    />
+    <div v-html="html" ></div>
   </div>
 </template>
 
