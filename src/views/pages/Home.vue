@@ -24,7 +24,7 @@
   <div class="home">
     <div class="overlay"></div>
     <video 
-      src="../../../public/WebsiteMainPageBackground.mp4"
+      src="/WebsiteMainPageBackground.mp4"
       autoplay
       muted
       loop
@@ -109,8 +109,14 @@
     position: absolute;
     object-fit: cover;
     z-index: -1;
-    filter: blur(10px);
+    filter: blur(5px);
   }
+
+@media only screen and (min-width: 1920px) {
+  .bg-video {
+    transform: scale(2)
+  }
+}
 
   .overlay {
     position: absolute;
