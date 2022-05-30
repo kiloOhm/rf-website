@@ -2,31 +2,10 @@
   import VueWriter from 'vue-writer';
   import pButton from '@/components/elements/p-button.vue';
   import sButton from '@/components/elements/s-button.vue';
-import { useRouter } from 'vue-router';
+  import { useRouter } from 'vue-router';
+import axios from 'axios';
 
-  const subtitles = [
-    'Wake up at the beach...',
-    'Hit a tree with a rock',
-    'Get chased by a bear...',
-    'Get saved by a hunter...',
-    'Put your hands up...',
-    'Receive a bow from the hunter...',
-    'Be confused... Move on...',
-    'Run along the road...',
-    'Hit barrels...',
-    'Get chased off by grumpy road farmer...',
-    'Ride your horse to town...',
-    'Haggle with traders...',
-    'Get recruited for an expedition to the badlands...',
-    'Clear and loot Trainyard...',
-    'Save your teammate from a hostile...',
-    'Join their faction...',
-    'Be promoted to number two...',
-    'Recruit new members...',
-    'Meet a friendly scientist...',
-    'Participate in an experiment...',
-    'Lose consciousness...',
-  ]
+  const subtitles = ((await axios.get('/Subtitles.txt')).data as string).split('\n');
 
   const router = useRouter();
 </script>
