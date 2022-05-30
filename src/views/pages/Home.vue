@@ -23,13 +23,15 @@
 <template>
   <div class="home">
     <div class="overlay"></div>
-    <video 
-      src="/WebsiteMainPageBackground.mp4"
-      autoplay
-      muted
-      loop
-      class="bg-video"
-    ></video>
+    <div class="video-container">
+      <video 
+        src="/WebsiteMainPageBackground.mp4"
+        autoplay
+        muted
+        loop
+        class="bg-video"
+      ></video>
+    </div>
     <div class="title">
       <p>Rust Factions</p>
     </div>
@@ -105,23 +107,37 @@
     gap: 1em;
   }
 
+  .video-container {
+    position: absolute;
+    width: 100%;
+    height: 105%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    overflow: hidden;
+  }
+
   .bg-video {
     position: absolute;
-    object-fit: cover;
+    /* object-fit: cover; */
     z-index: -1;
     filter: blur(5px);
   }
 
 @media only screen and (min-width: 1920px) {
+  .video-container {
+    width: 100%;
+    height: 100vh;
+  }
   .bg-video {
-    transform: scale(2)
+    transform: scale(2);
   }
 }
 
   .overlay {
     position: absolute;
-    width: 110%;
-    height: 110%;
+    width: 100%;
+    height: 105%;
     background-color: #00000088;
     z-index: 0;
   }

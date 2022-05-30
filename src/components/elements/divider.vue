@@ -24,6 +24,7 @@ const style = {
   height: 50px;
   mask-repeat: repeat-x;
   width: 100%;
+  top: 0;
 }
 
 @media screen and (-webkit-min-device-pixel-ratio:0) { 
