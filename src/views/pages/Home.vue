@@ -5,19 +5,27 @@
 import { useRouter } from 'vue-router';
 
   const subtitles = [
-    'Waking up on the beach...',
-    'Hitting a tree with a rock...',
-    'Getting chased by a bear...',
-    'Building a campfire...',
-    'Crafting a hatchet...',
-    'Running the road...',
-    'Hitting barrels...',
-    'Getting chased off by a grumpy road farmer...',
-    'Crafting a bow...',
-    'Hunting a boar...',
-    'Meeting a friendly scientist...',
-    'Participating in an experiment...',
-    'Losing consciousness...'
+    'Wake up at the beach...',
+    'Hit a tree with a rock',
+    'Get chased by a bear...',
+    'Get saved by a hunter...',
+    'Put your hands up...',
+    'Receive a bow from the hunter...',
+    'Be confused... Move on...',
+    'Run along the road...',
+    'Hit barrels...',
+    'Get chased off by grumpy road farmer...',
+    'Ride your horse to town...',
+    'Haggle with traders...',
+    'Get recruited for an expedition to the badlands...',
+    'Clear and loot Trainyard...',
+    'Save your teammate from a hostile...',
+    'Join their faction...',
+    'Be promoted to number two...',
+    'Recruit new members...',
+    'Meet a friendly scientist...',
+    'Participate in an experiment...',
+    'Lose consciousness...',
   ]
 
   const router = useRouter();
