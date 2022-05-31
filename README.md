@@ -48,4 +48,6 @@ You can use links in popups but <ins>you can't open another popup on top!</ins>
 
 The media image sliders are generated based on the structure inside the *media* folder. Any images at the root of the folder will be shown in the first slider, after that the numbering like `1-Cool builds` will determine the order.
 
+The sliders support .png, .jpg, .jpeg and .gif files
+
 (When testing locally, you need to run `npm run index` (in a wsl console if you're on windows) after each change to enable the program to detect the files)
