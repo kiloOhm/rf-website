@@ -108,7 +108,7 @@ onMounted(() => {
 
 <style scoped>
 .media {
-  margin: 2em 0 2em 0;
+  padding: 2em 0 2em 0;
   width: 100%;
 }
 
@@ -121,7 +121,6 @@ onMounted(() => {
 }
 
 .card {
-  margin: 1em;
   width: 90%;
   max-width: 1920px;
   transition: all .2s ease;

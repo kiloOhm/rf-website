@@ -21,7 +21,7 @@ onMounted(() => {
       <img src="../../assets/tebex.svg">
     </div>
     <p>This server is run by volunteers who invest their time and money</p>
-    <p>to give you the ultimate Rust Roleplay experience</p>
+    <p>to give you the ultimate Rust Roleplay experience.</p>
     <p>Thanks for all your support!</p>
   </div>
 </template>

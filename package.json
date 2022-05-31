@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite --host",
-    "index": "find public/media -regextype posix-egrep -regex \".*\\.(png|jpg|jpeg)$\" > public/media/index.txt",
+    "index": "find public/media -regextype posix-egrep -regex \".*\\.(png|jpg|jpeg|gif)$\" > public/media/index.txt",
     "build": "npm run index && vue-tsc --noEmit && vite build",
     "preview": "vite preview --port 5050",
     "typecheck": "vue-tsc --noEmit",

@@ -39,12 +39,6 @@ const pages = ref<navItem[]>([
     component: h(Home),
   },
   {
-    title: 'Rules',
-    header: 'Rules',
-    key: 'rules',
-    component: h(Rules)
-  },
-  {
     title: 'Media',
     header: 'Media',
     key: 'media',
@@ -61,6 +55,12 @@ const pages = ref<navItem[]>([
     header: 'Donate',
     key: 'donate',
     component: h(Donate)
+  },
+  {
+    title: 'Rules',
+    header: 'Rules',
+    key: 'rules',
+    component: h(Rules)
   },
   {
     title: 'Contact',

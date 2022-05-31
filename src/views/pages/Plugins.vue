@@ -191,7 +191,7 @@ onMounted(() => {
 
 .text {
   padding: 1em;
-  background-color: var(--bg1);
+  background-color: var(--bg2);
   overflow-wrap: break-word;
   width: 100%;
 }

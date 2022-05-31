@@ -27,6 +27,7 @@ onMounted(() => {
         muted
         loop
         class="bg-video"
+        poster="/sunsetinfield.png"
       ></video>
     </div>
     <div class="title">
