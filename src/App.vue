@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRouter } from "vue-router";
-import { h, nextTick, ref, Suspense, watch } from "vue";
+import { h, nextTick, provide, ref, Suspense, watch } from "vue";
 import rfLoading from "@/components/elements/rf-loading.vue";
 import { 
   NConfigProvider, 
@@ -81,6 +81,7 @@ const page = computed(() => {
 })
 const scrollContainer = () => document.getElementById('scroll-container');
 const scrollTopAmount = ref(0);
+provide('scrollTopAmount', scrollTopAmount);
 const scrolling = ref(false);
 let timeout;
 const setScrollTopAmount = throttle((amount) => {

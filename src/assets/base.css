@@ -65,7 +65,8 @@ body:after {
 }
 
 ::-webkit-scrollbar {
-  width: 0;
+  width: 0px;
+  height: 0px;
 }
 
 ::-webkit-scrollbar-track {
@@ -77,6 +78,6 @@ body:after {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--bg2);
+  background: var(--bg3);
   border-radius: 5px;
 }

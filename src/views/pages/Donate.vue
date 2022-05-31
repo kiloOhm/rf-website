@@ -37,8 +37,10 @@ onMounted(() => {
 }
 
 .donate p {
+  margin: 0 1em 0 1em;
   font-size: xx-large;
   font-weight: 700;
+  text-align: center;
 }
 
 .tebex {

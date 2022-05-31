@@ -2,7 +2,7 @@
 import axios from 'axios';
 import { groupBy } from 'lodash';
 import { NCarousel, NCard, NCarouselItem, NIcon } from 'naive-ui';
-import { nextTick, onMounted, onUpdated, ref } from 'vue';
+import { inject, nextTick, onMounted, onUpdated, ref, type Ref } from 'vue';
 import { PauseOutline } from '@vicons/ionicons5';
 
 const index = (await axios.get('/media/index.txt'))?.data?.replaceAll('\r', '').replaceAll('public/media/', '') as string;
@@ -51,7 +51,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="media">
+  <div class="media" ref="pageRef">
     <div class="carousels">
       <div 
         class="card"
@@ -73,7 +73,6 @@ onMounted(() => {
           @mouseenter="hovered = slider.title"
           @mouseleave="hovered = null"
           @touchstart="hovered = slider.title"
-          @touchend="hovered = null"
         >
           <template #header>
             <div class="header">
