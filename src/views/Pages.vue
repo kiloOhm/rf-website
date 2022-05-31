@@ -1,5 +1,5 @@
 <script setup lang="ts">import type { navItem } from '@/components/navMenu.vue';
-import { ref, toRefs, watch } from 'vue';
+import { nextTick, ref, toRefs, watch } from 'vue';
 import { useRouter } from 'vue-router';
 import Divider from '../components/elements/divider.vue';
 import rfLoading from '@/components/elements/rf-loading.vue';
@@ -10,33 +10,30 @@ interface Props {
   scrollContainer: string,
   activePage: string,
   scrollHeight: number,
-
+  scrolling: boolean,
 }
 const props = defineProps<Props>();
-const { pages, activePage, scrollHeight } = toRefs(props);
+const { pages, activePage, scrollHeight, scrolling } = toRefs(props);
 const emit = defineEmits(['update:activePage']);
 const pageRefs = ref();
 const scrollContainer = () => document.getElementById(props.scrollContainer);
 const getPageIndex = (key: string) => pages.value.findIndex((p) => p.key == key);
 const getPage = (key: string) => pageRefs.value[getPageIndex(key)] as HTMLElement
 const scrollPushed = ref(false);
-defineExpose({
-  scrollTo: (newValue) => {
-    const ref = getPage(newValue);
-    if(!ref) return;
-    scrollContainer()?.scrollTo({
-      top: ref.offsetTop,
-      behavior: 'smooth',
-    })
-  },
-  scrollPush: () => {
-    if(scrollPushed.value) {
-      scrollPushed.value = false;
-      return true;
-    }
-    return false;
-  }
+watch(router.currentRoute, (newValue) => {
+  if(scrolling.value) return;
+  waitUntilReady(() => {
+    scrollTo(newValue.params.page);
+  })
 })
+const scrollTo = (newValue) => {
+  const ref = getPage(newValue);
+  if(!ref) return;
+  scrollContainer()?.scrollTo({
+    top: ref.offsetTop,
+    behavior: 'smooth',
+  })
+};
 watch(scrollHeight, (height) => {
   const pageMiddle = height + window.innerHeight / 2;
   for(const page of pages.value) {
@@ -56,6 +53,25 @@ const bg = (i: number) => {
   if(i % 2 != 0) {
     return `background-color: ${bg1Zebra}`;
   }
+}
+const waitUntilReady = (callback: () => void) => {
+  let allReady = true;
+  for(const p of pages.value) {
+    if(!p.ready) {
+      allReady = false;
+      break;
+    }
+  }
+  if(allReady) {
+    callback?.();
+    return;
+  }
+  setTimeout(() => {
+    waitUntilReady(callback);
+  }, 1000);
+}
+const ready = (key: string) => {
+  pages.value[getPageIndex(key)].ready = true;
 }
 </script>
 
@@ -85,6 +101,7 @@ const bg = (i: number) => {
         <Suspense>
           <component 
             :is="page.component" 
+            @ready="(key) => ready(key)"
           />
           <template #fallback>
             <rf-loading />

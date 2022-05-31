@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import axios from 'axios';
-import { reactive } from 'vue';
+import { nextTick, onMounted, onUpdated, reactive } from 'vue';
 import RenderMarkdown from '../../components/render-markdown.vue';
 import { NCollapseTransition, NIcon } from 'naive-ui';
 import { CaretDownOutline } from '@vicons/ionicons5';
@@ -22,6 +22,12 @@ const plugins = pluginsMD.split('#').filter((p) => p).map((p) => {
 });
 const _plugins = reactive(plugins);
 const direction = (i: number) => (i % 2) == 0 ? 'left' : 'right';
+const emit = defineEmits(['ready'])
+let init = false;
+onMounted(() => {
+  if(init) return;
+  emit('ready', 'plugins');
+})
 </script>
 
 <template>

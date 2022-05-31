@@ -8,22 +8,25 @@ export interface navItem {
   key: string;
   component?: VNode,
   onActivate?: (key: string) => void
+  ready?: boolean
 }
 interface Props {
   vertical?: boolean;
   items: navItem[];
   gap?: string;
   active: string;
+  scrolling: boolean;
 }
 const props = defineProps<Props>();
 const emit = defineEmits(['update:active']);
-const { active } = toRefs(props);
+const { active, scrolling } = toRefs(props);
 const style = computed(() => ({
   flexDirection: props.vertical ? 'column' : 'row',
   columnGap: props.vertical ? '' : props.gap ?? '1em',
   rowGap: props.vertical ? props.gap ?? '1em' : '',
 } as CSSProperties))
 const select = (item: navItem) => {
+  if(scrolling.value) return;
   emit('update:active', item.key);
   item.onActivate?.(item.key);
 }

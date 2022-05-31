@@ -36,7 +36,7 @@ const pages = ref<navItem[]>([
   {
     title: 'Home',
     key: 'home',
-    component: h(Home)
+    component: h(Home),
   },
   {
     title: 'Rules',
@@ -70,10 +70,6 @@ const pages = ref<navItem[]>([
   }
 ])
 const router = useRouter()
-watch(router.currentRoute, (newValue) => {
-  if(pagesRef.value.scrollPush()) return;
-  pagesRef.value?.scrollTo(newValue.params.page);
-})
 const activePage = ref('home');
 watch(activePage, (newValue, oldValue) => {
   if(expandNav.value) {
@@ -85,7 +81,14 @@ const page = computed(() => {
 })
 const scrollContainer = () => document.getElementById('scroll-container');
 const scrollTopAmount = ref(0);
+const scrolling = ref(false);
+let timeout;
 const setScrollTopAmount = throttle((amount) => {
+  clearTimeout(timeout);
+  scrolling.value = true;
+  timeout = setTimeout(() => {
+    scrolling.value = false;
+  }, 200)
   scrollTopAmount.value = amount;
 }, 200);
 nextTick(() => {
@@ -96,7 +99,6 @@ nextTick(() => {
 const showScrollToTop = computed(() => {
   return scrollTopAmount.value > window.innerHeight / 2;
 })
-const pagesRef = ref();
 document.addEventListener('click', (e) => {
   const link = (e.target as HTMLElement)?.closest('a')?.href;
   if(!link) return;
@@ -132,9 +134,10 @@ document.addEventListener('click', (e) => {
               <div class="nav">
                 <nav-menu 
                   :active="activePage"
-                  @update:active="(page) => pagesRef.scrollTo(page)"
+                  @update:active="(page) => router.push('/' + page)"
                   :items="pages"
                   gap="2em"
+                  :scrolling="scrolling"
                 />
               </div>
             </div>
@@ -144,9 +147,10 @@ document.addEventListener('click', (e) => {
               <div class="nav-menu">
                 <nav-menu 
                   :active="activePage"
-                  @update:active="(page) => pagesRef.scrollTo(page)"
+                  @update:active="(page) => router.push('/' + page)"
                   vertical
                   :items="pages"
+                  :scrolling="scrolling"
                 />
               </div>
             </n-collapse-transition>
@@ -157,6 +161,7 @@ document.addEventListener('click', (e) => {
                 scroll-container="scroll-container"
                 v-model:active-page="activePage"
                 :scroll-height="scrollTopAmount"
+                :scrolling="scrolling"
               />
             </div>
             <Transition>

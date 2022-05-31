@@ -2,12 +2,13 @@
 import axios from 'axios';
 import { groupBy } from 'lodash';
 import { NCarousel, NCard, NCarouselItem, NIcon } from 'naive-ui';
-import { ref } from 'vue';
+import { nextTick, onMounted, onUpdated, ref } from 'vue';
 import { PauseOutline } from '@vicons/ionicons5';
 
 const index = (await axios.get('/media/index.txt'))?.data?.replaceAll('\r', '').replaceAll('public/media/', '') as string;
 const lines = index.split('\n').filter((l) => l);
 interface slider {
+  prio?: number,
   title: string,
   images: string[]
 }
@@ -16,10 +17,11 @@ const slidersRaw = groupBy(lines, (line) => {
   return path.splice(0, path.length - 1).join('/');
 });
 const sliders = Object.keys(slidersRaw).map((k) => ({
-  title: k.replaceAll('/', ' '),
+  prio: parseInt(k?.charAt(0)) || 0,
+  title: k.replaceAll('/', ' ').slice(2),
   images: slidersRaw[k].map((s) => '/media/' + s)
 } as slider))
-console.log(sliders);
+sliders?.sort((a, b) => (a?.prio ?? 0) - (b?.prio ?? 0))
 const carouselRefs = ref()
 const randomInterval = (callback: () => void) => {
   var min = 2000,
@@ -40,6 +42,12 @@ for(let i = 0; i < sliders.length; i++) {
   }, 2000)
 }
 const hovered = ref()
+const emit = defineEmits(['ready'])
+let init = false;
+onMounted(() => {
+  if(init) return;
+  emit('ready', 'media');
+})
 </script>
 
 <template>

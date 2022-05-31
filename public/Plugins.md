@@ -7,7 +7,7 @@ Click Here for Commands [Connect](plugins/modal/test-2)
 
 &nbsp;
 
-Available on:
+&nbsp;Available on:
 
 RustFactions.io Roleplay [Connect](plugins/modal/test)
 

@@ -4,10 +4,17 @@
   import sButton from '@/components/elements/s-button.vue';
   import { useRouter } from 'vue-router';
 import axios from 'axios';
+import { nextTick, onMounted, onUpdated } from 'vue';
 
   const subtitles = ((await axios.get('/Subtitles.txt')).data as string).split('\n');
 
   const router = useRouter();
+  const emit = defineEmits(['ready'])
+let init = false;
+onMounted(() => {
+  if(init) return;
+    emit('ready', 'home');
+  })
 </script>
 
 <template>
