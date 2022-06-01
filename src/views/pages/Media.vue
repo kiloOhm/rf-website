@@ -2,9 +2,8 @@
 import axios from 'axios';
 import { groupBy } from 'lodash';
 import { NCarousel, NCard, NCarouselItem, NIcon, NModal } from 'naive-ui';
-import { nextTick, onMounted, ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { PauseOutline } from '@vicons/ionicons5';
-import Hammer from 'hammerjs';
 
 const index = (await axios.get('/media/index.txt'))?.data?.replaceAll('\r', '').replaceAll('public/media/', '') as string;
 const lines = index.split('\n').filter((l) => l);
