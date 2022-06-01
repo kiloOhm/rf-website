@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import axios from 'axios';
 import { groupBy } from 'lodash';
-import { NCarousel, NCard, NCarouselItem, NIcon } from 'naive-ui';
-import { inject, nextTick, onMounted, onUpdated, ref, type Ref } from 'vue';
+import { NCarousel, NCard, NCarouselItem, NIcon, NModal } from 'naive-ui';
+import { nextTick, onMounted, ref } from 'vue';
 import { PauseOutline } from '@vicons/ionicons5';
+import Hammer from 'hammerjs';
 
 const index = (await axios.get('/media/index.txt'))?.data?.replaceAll('\r', '').replaceAll('public/media/', '') as string;
 const lines = index.split('\n').filter((l) => l);
@@ -48,13 +49,13 @@ onMounted(() => {
   if(init) return;
   emit('ready', 'media');
 })
+const fullScreen = ref<string | undefined>();
 </script>
 
 <template>
   <div class="media" ref="pageRef">
     <div class="carousels">
-      <div 
-        class="card"
+      <div class="card desktop"
         v-for="(slider, index) in sliders"
         :key="index"
         :class="(hovered == slider.title ? 'hovered' : '')"
@@ -64,7 +65,10 @@ onMounted(() => {
             class="header-extra"
             v-if="hovered == slider.title"
           >
-            <n-icon size="30">
+            <n-icon 
+              size="30"
+              @touchstart="hovered = null"
+            >
               <pause-outline/>
             </n-icon>
           </div>
@@ -97,16 +101,92 @@ onMounted(() => {
                 class="carousel-img"
                 :class="(carouselRefs?.[index].getCurrentIndex() == index2 ? '' : 'outer')"
                 :src="url"
+                loading="lazy"
+                @click="fullScreen = url"
+              >
+            </n-carousel-item>
+          </n-carousel>
+        </n-card>
+      </div>
+      <div class="card mobile"
+        v-for="(slider, index) in sliders"
+        :key="index"
+        :class="(hovered == slider.title ? 'hovered' : '')"
+      >
+        <transition>
+          <div 
+            class="header-extra"
+            v-if="hovered == slider.title"
+          >
+            <n-icon 
+              size="30"
+              @touchstart="hovered = null"
+            >
+              <pause-outline/>
+            </n-icon>
+          </div>
+        </transition>
+        <n-card
+          @mouseenter="hovered = slider.title"
+          @mouseleave="hovered = null"
+          @touchstart="hovered = slider.title"
+        >
+          <template #header>
+            <div class="header">
+              <h1>{{ slider.title }}</h1>
+            </div>
+          </template>
+          <n-carousel
+            class="carousel"
+            dot-type="line"
+            slides-per-view="auto"
+            centered-slides
+            draggable
+            trigger="hover"
+            ref="carouselRefs"
+          >
+            <n-carousel-item
+              v-for="(url, index2) in slider.images"
+              :key="index2"
+              style="width: max-content; max-width: 100%; margin: auto;"
+            >
+              <img
+                class="carousel-img"
+                :class="(carouselRefs?.[index].getCurrentIndex() == index2 ? '' : 'outer')"
+                :src="url"
+                loading="lazy"
+                @click="fullScreen = url"
               >
             </n-carousel-item>
           </n-carousel>
         </n-card>
       </div>
     </div>
+    <n-modal
+      :show="fullScreen != undefined"
+      @update:show="(v) => !v ? fullScreen = undefined : null"
+      
+    >
+      <div id="fullscreen">
+        <img :src="fullScreen"/>
+      </div>
+    </n-modal>
   </div>
 </template>
 
 <style scoped>
+
+@media only screen and (min-width: 600px) {
+  .mobile {
+    display: none;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .desktop {
+    display: none;
+  }
+}
+
 .media {
   padding: 2em 0 2em 0;
   width: 100%;
@@ -124,6 +204,14 @@ onMounted(() => {
   width: 90%;
   max-width: 1920px;
   transition: all .2s ease;
+}
+
+.card.mobile {
+  width: 100%;
+}
+
+.card.mobile :deep() .n-card__content {
+  padding: 0;
 }
 
 .carousel-img {
@@ -166,5 +254,19 @@ onMounted(() => {
 .v-leave-to {
   opacity: 0;
   transform: scaleY(0);
+}
+
+#fullscreen {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#fullscreen img {
+  object-fit: contain;
+  max-width: 90%;
+  max-height: 90%;
 }
 </style>

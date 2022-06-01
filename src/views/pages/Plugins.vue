@@ -127,6 +127,11 @@ onMounted(() => {
   justify-items: center;
 }
 
+.mobile .title :deep() h1 {
+  font-size: xx-large;
+  padding: .4em;
+}
+
 .caret {
   transition: transform .3s ease-out;
 }

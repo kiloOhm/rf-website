@@ -49,7 +49,7 @@ const close = () => {
     >
       <n-modal 
         v-model:show="modal.show"
-        style="max-width: 80%; width: max-content"
+        style="max-width: 90%; max-height: 90%; overflow: auto; width: max-content"
         @after-leave="close()"
       >
         <n-card
