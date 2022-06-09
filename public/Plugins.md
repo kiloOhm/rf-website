@@ -9,7 +9,7 @@ Detailed information can be found [here](plugins/modal/test-1).
 
 &nbsp;
 
-Available Servers: [Roleplay] | [Vanilla Kits]
+Available Servers: [Roleplay](steam://connect/54.39.130.212:28015) | [Vanilla Kits](steam://connect/54.39.130.212:28015)
 
 # Auth Groups
 ![authgroups](/authgroups.png)
@@ -22,7 +22,7 @@ Detailed information can be found [here](plugins/modal/authgroups).
 
 &nbsp;
 
-Available Servers: [Roleplay] | [Vanilla] | [Vanilla Kits]
+Available Servers: [Roleplay](steam://connect/54.39.130.212:28015) | [Vanilla](steam://connect/54.39.130.212:28015) | [Vanilla Kits](steam://connect/54.39.130.212:28015)
 
 # Chest Stacks
 ![cheststacks](/cheststacks.png)
@@ -35,7 +35,7 @@ Detailed information can be found [here](plugins/modal/cheststacks).
 
 &nbsp;
 
-Available Servers: [Roleplay] | [Vanilla Kits]
+Available Servers: [Roleplay](steam://connect/54.39.130.212:28015) | [Vanilla Kits](steam://connect/54.39.130.212:28015)
 
 # Conquest
 ![conquest1](/conquest1.png)
@@ -48,7 +48,7 @@ Detailed information can be found [here](plugins/modal/conquest).
 
 &nbsp;
 
-Available Servers: [Roleplay] | [Vanilla] | [Vanilla Kits]
+Available Servers: [Roleplay](steam://connect/54.39.130.212:28015) | [Vanilla](steam://connect/54.39.130.212:28015) | [Vanilla Kits](steam://connect/54.39.130.212:28015)
 
 # Cooking 2.0
 ![cooking](/cooking.jpg)
@@ -61,6 +61,6 @@ Detailed information can be found [here](plugins/modal/cooking).
 
 &nbsp;
 
-Available Servers: [Roleplay]
+Available Servers: [Roleplay](steam://connect/54.39.130.212:28015)
 
-# Kits
+# Dragable Corpses
