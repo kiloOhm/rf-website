@@ -75,3 +75,13 @@ Detailed information can be found [here](plugins/modal/rpname).
 
 Available Servers: [Roleplay](steam://connect/54.39.130.212:28015) | [Vanilla](steam://connect/54.39.130.212:28015) | [Vanilla Kits](steam://connect/54.39.130.212:28015)
 
+# Rusty Cuffs
+![rustycuffs](/rustycuffs.png)
+
+Gives players handcuff mechanics by allowing you to restrain and escort other players with an item.
+
+Detailed information can be found [here](plugins/modal/rustycuffs).
+
+&nbsp;
+
+Available Servers: [Roleplay](steam://connect/54.39.130.212:28015)
