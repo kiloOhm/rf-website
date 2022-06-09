@@ -52,3 +52,26 @@ Detailed information can be found [here](plugins/modal/cooking).
 &nbsp;
 
 Available Servers: [Roleplay](steam://connect/54.39.130.212:28015)
+
+# Police Vehicles
+![policevehicles](/policevehicles.png)
+
+Allows players to purchase police variants of modular cars, helis, and boats.
+
+Detailed information can be found [here](plugins/modal/policevehicles).
+
+&nbsp;
+
+Available Servers: [Roleplay](steam://connect/54.39.130.212:28015)
+
+# Rename
+![rpname](/rpname.png)
+
+Change your in game name without affecting your steam name with our rename plugin.
+
+Detailed information can be found [here](plugins/modal/rpname).
+
+&nbsp;
+
+Available Servers: [Roleplay](steam://connect/54.39.130.212:28015) | [Vanilla](steam://connect/54.39.130.212:28015) | [Vanilla Kits](steam://connect/54.39.130.212:28015)
+
