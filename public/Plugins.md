@@ -1,19 +1,13 @@
-# Auth Groups
+# AbsolutSorter
 ![harold](/harold.jpeg)
 
-Allows players to create groups that will authorize added members for things such as code locks, building privilege and auto turrets.
-
-Click Here for Commands [Connect](plugins/modal/test-2)
-
+Give players the ability to setup storage containers with configurable items and item categories via a in-inventory UI then with the click of a button sort and dump all the items from the players inventory in to the designated containers.
 &nbsp;
+Detailed information can be found [here](plugins/modal/test-2).
+&nbsp;
+Available Servers: Roleplay
 
-&nbsp;Available on:
-
-RustFactions.io Roleplay [Connect](plugins/modal/test)
-
-RustFactions.io Vanilla
-
-# Conquest
+# Auth Groups
 ![harold](/harold.jpeg)
 
 Allows players to create groups that will authorize added members for things such as code locks, building privilege and auto turrets.
