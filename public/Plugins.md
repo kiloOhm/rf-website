@@ -2,10 +2,10 @@
 ![harold](/harold.jpeg)
 
 Give players the ability to setup storage containers with configurable items and item categories via a in-inventory UI then with the click of a button sort and dump all the items from the players inventory in to the designated containers.
-&nbsp;
+
 Detailed information can be found [here](plugins/modal/test-2).
-&nbsp;
-Available Servers: Roleplay
+
+Available Servers: Roleplay [connect]
 
 # Auth Groups
 ![harold](/harold.jpeg)
