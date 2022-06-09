@@ -85,3 +85,47 @@ Detailed information can be found [here](plugins/modal/rustycuffs).
 &nbsp;
 
 Available Servers: [Roleplay](steam://connect/54.39.130.212:28015)
+
+# Sign Artist
+![signartist](/signartist.png)
+
+Allows players the ability to load custom images to signs from a remote URL.
+
+Detailed information can be found [here](plugins/modal/signartist).
+
+&nbsp;
+
+Available Servers: [Roleplay](steam://connect/54.39.130.212:28015) | [Vanilla](steam://connect/54.39.130.212:28015) | [Vanilla Kits](steam://connect/54.39.130.212:28015)
+
+# Skinbox
+![skinit](/skinit.png)
+
+Gives the ability to skin items and request custom skins from the Steam workshop for use on the server.
+
+Detailed information can be found [here](plugins/modal/skinit).
+
+&nbsp;
+
+Available Servers: [Roleplay](steam://connect/54.39.130.212:28015) | [Vanilla](steam://connect/54.39.130.212:28015) | [Vanilla Kits](steam://connect/54.39.130.212:28015)
+
+# Taser
+![electrictazer](/electrictazer.png)
+
+Allows players to purchase a taser from the shop that will impair a player to move for a configurable amount of time.
+
+Detailed information can be found [here](plugins/modal/electrictazer).
+
+&nbsp;
+
+Available Servers: [Roleplay](steam://connect/54.39.130.212:28015)
+
+# Water Bases
+![waterbases](/waterbases.jpg)
+
+Allows players with to build structures on the surface of the water and even expand them underwater.
+
+Detailed information can be found [here](plugins/modal/waterbases).
+
+&nbsp;
+
+Available Servers: [Roleplay](steam://connect/54.39.130.212:28015)
