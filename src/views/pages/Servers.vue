@@ -69,24 +69,35 @@ onMounted(() => {
       <p>{{server.description}}</p>
       <template #footer>
         <n-badge 
+          v-if="server.players || server.maxPlayers"
           :value="`${server.players}/${server.maxPlayers}`"
           class="badge"
         >
           <n-avatar
             round
-            src="/user_icon.png"
-            class="user"
-          />
+          >
+            <img 
+              class="user"
+              src="/user_icon.png" 
+              alt="user icon"
+            >
+          </n-avatar>
         </n-badge>
         <n-badge 
+          v-if="server.sleepers"
           :value="`${server.sleepers}`"
           class="badge"
         >
           <n-avatar
             round
-            src="/sleep_icon3.png"
-            class="sleeper"
-          />
+            
+          >
+            <img 
+              class="sleeper"
+              src="/sleep_icon3.png" 
+              alt="sleeper icon"
+            >
+          </n-avatar>
         </n-badge>
       </template>
       <template #action>

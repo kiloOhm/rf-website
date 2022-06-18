@@ -117,8 +117,8 @@ onMounted(() => {
     position: absolute;
     height: 100%;
     object-fit: fill;
-    z-index: 1;
-    filter: blur(3px);
+    z-index: 0;
+    filter: blur(3px) brightness(.4);
     transform: scale(1.6);
   }
 
@@ -126,8 +126,7 @@ onMounted(() => {
     position: absolute;
     width: 100%;
     height: 105%;
-    background-color: #00000088;
-    z-index: 2;
+    z-index: 1;
     display: grid;
     grid-template: 
     "." 2fr

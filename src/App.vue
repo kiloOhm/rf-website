@@ -191,7 +191,7 @@ document.addEventListener('click', (e) => {
   position: absolute;
   width: 100%;
   height: 100vh;
-  background-image: url(https://files.facepunch.com/lewis/1b2411b1/image-section.jpg);
+  background-image: url(/background.webp);
   background-repeat: no-repeat;
   background-size: cover;
   filter: blur(3px) brightness(40%);
