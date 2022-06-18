@@ -148,8 +148,14 @@ onMounted(() => {
 </template>
 
 <style scoped>
+@media only screen and (max-width: 600px) {
+  .connect-btn {
+    display: none;
+  }
+}
+
 .servers {
-  width: 90%;
+  max-width: 100vw;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -172,7 +178,8 @@ onMounted(() => {
 }
 
 .card {
-  width: min-content;
+  width: 400px;
+  max-width: 90vw;
 }
 
 .card :deep() .n-card-header {
