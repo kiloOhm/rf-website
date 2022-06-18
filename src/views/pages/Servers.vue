@@ -12,6 +12,7 @@ interface ServerInfo {
   ip: string | undefined;
   description: string | undefined;
   rules: string | undefined;
+  up: boolean | undefined;
   players: number | undefined;
   maxPlayers: number | undefined;
   sleepers: number | undefined;
@@ -19,9 +20,14 @@ interface ServerInfo {
 
 const servers= (await axios.get('/Servers.json')).data as ServerInfo[];
 try {
-  const serverInfo= (await axios.get('https://rf-backend.onrender.com')).data;
+  const serverInfo = (await axios.get('https://rf-backend.onrender.com', {
+    timeout: 2000,
+  })).data;
   for(const s of servers) {
     try {
+      if(s.name in serverInfo) {
+        s.up = true;
+      }
       const data = serverInfo[s.name];
       s.players = data.players
       s.maxPlayers = data.maxplayers
@@ -73,37 +79,42 @@ onMounted(() => {
       </template>
       <p>{{server.description}}</p>
       <template #footer>
-        <n-badge 
-          v-if="server.players || server.maxPlayers"
-          :value="`${server.players}/${server.maxPlayers}`"
-          class="badge"
+        <div 
+          class="footer"
+          v-if="server.up"
         >
-          <n-avatar
-            round
+          <n-badge 
+            v-if="server.players || server.maxPlayers"
+            :value="`${server.players}/${server.maxPlayers}`"
+            class="badge"
           >
-            <img 
-              class="user"
-              src="/user_icon.png" 
-              alt="user icon"
+            <n-avatar
+              round
             >
-          </n-avatar>
-        </n-badge>
-        <n-badge 
-          v-if="server.sleepers"
-          :value="`${server.sleepers}`"
-          class="badge"
-        >
-          <n-avatar
-            round
-            
+              <img 
+                class="user"
+                src="/user_icon.png" 
+                alt="user icon"
+              >
+            </n-avatar>
+          </n-badge>
+          <n-badge 
+            v-if="server.sleepers"
+            :value="`${server.sleepers}`"
+            class="badge"
           >
-            <img 
-              class="sleeper"
-              src="/sleep_icon3.png" 
-              alt="sleeper icon"
+            <n-avatar
+              round
+              
             >
-          </n-avatar>
-        </n-badge>
+              <img 
+                class="sleeper"
+                src="/sleep_icon3.png" 
+                alt="sleeper icon"
+              >
+            </n-avatar>
+          </n-badge>
+        </div>
       </template>
       <template #action>
         <p-button
