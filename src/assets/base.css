@@ -52,7 +52,7 @@ body {
 }
 
 body:after {
-  background-image: url(https://files.facepunch.com/garry/1b1011b1/test.png?1=);
+  background-image: url(/grit.webp);
   content: " ";
   position: fixed;
   left: 0;

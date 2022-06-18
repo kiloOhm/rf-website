@@ -4,7 +4,7 @@
   import sButton from '@/components/elements/s-button.vue';
   import { useRouter } from 'vue-router';
 import axios from 'axios';
-import { nextTick, onMounted, onUpdated } from 'vue';
+import { onMounted } from 'vue';
 
   const subtitles = ((await axios.get('/Subtitles.txt')).data as string).split('\n');
 
@@ -19,7 +19,6 @@ onMounted(() => {
 
 <template>
   <div class="home">
-    <div class="overlay"></div>
     <div class="video-container">
       <video 
         class="bg-video"
@@ -29,41 +28,39 @@ onMounted(() => {
         loop
         poster="/poster.webp"
       ></video>
-      <!-- <img 
-        class="bg-video"
-        src="/background.gif"
-        alt="background gif"
-      > -->
     </div>
-    <div class="title">
-      <p>Rust Factions</p>
-    </div>
-    <div class="subtitle">
-      <vue-writer
-        class="text"
-        :array="subtitles"
-        :typeSpeed="50"
-        :delay="2000"
-        :eraseSpeed="25"
-      />
-    </div>
-    <div class="actions">
-      <p-button
-        class="connect-btn"
-      >
-        Connect
-      </p-button>
-      <p-button
-        class="contact-btn"
-        @click="router.push('/contact')"
-      >
-        Contact
-      </p-button>
-      <s-button
-        @click="router.push('/donate')"
-      >
-        Donate
-      </s-button>
+    <div class="overlay">
+      <div class="title">
+        <p>Rust Factions</p>
+      </div>
+      <div class="subtitle">
+        <vue-writer
+          class="text"
+          :array="subtitles"
+          :typeSpeed="50"
+          :delay="2000"
+          :eraseSpeed="25"
+        />
+      </div>
+      <div class="actions">
+        <p-button
+          class="connect-btn"
+          @click="router.push('/servers')"
+        >
+          Connect
+        </p-button>
+        <p-button
+          class="contact-btn"
+          @click="router.push('/contact')"
+        >
+          Contact
+        </p-button>
+        <s-button
+          @click="router.push('/donate')"
+        >
+          Donate
+        </s-button>
+      </div>
     </div>
   </div>
 </template>
@@ -72,16 +69,6 @@ onMounted(() => {
   .home {
     height: 80vh;
     width: 100%;
-    display: grid;
-    grid-template: 
-    "." 2fr
-    "t" max-content
-    "." .2fr
-    "s" max-content
-    "." .5fr
-    "a" max-content
-    "." 3fr / 100%;
-    justify-items: center;
   }
 
   .title {
@@ -130,7 +117,7 @@ onMounted(() => {
     position: absolute;
     height: 100%;
     object-fit: fill;
-    z-index: -1;
+    z-index: 1;
     filter: blur(3px);
     transform: scale(1.6);
   }
@@ -140,7 +127,17 @@ onMounted(() => {
     width: 100%;
     height: 105%;
     background-color: #00000088;
-    z-index: 0;
+    z-index: 2;
+    display: grid;
+    grid-template: 
+    "." 2fr
+    "t" max-content
+    "." .2fr
+    "s" max-content
+    "." .5fr
+    "a" max-content
+    "." 3fr / 100%;
+    justify-items: center;
   }
 
   @media only screen and (min-width: 600px) {

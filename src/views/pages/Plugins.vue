@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import axios from 'axios';
-import { nextTick, onMounted, onUpdated, reactive } from 'vue';
+import { onMounted, reactive } from 'vue';
 import RenderMarkdown from '../../components/render-markdown.vue';
 import { NCollapseTransition, NIcon } from 'naive-ui';
 import { CaretDownOutline } from '@vicons/ionicons5';
@@ -185,8 +185,8 @@ onMounted(() => {
 }
 
 .desktop .image :deep() img {
-  max-width: 300px;
-  max-height: 300px;
+  max-width: 500px;
+  max-height: 500px;
   object-fit: contain;
 }
 

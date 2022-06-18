@@ -18,7 +18,7 @@ onMounted(() => {
     <div class="tebex"
       @click="newTab('https://rustfactions.tebex.io/')"
     >
-      <img src="../../assets/tebex.svg">
+      <img src="../../assets/tebex.svg" alt="Tabex Webstore">
     </div>
     <p>This server is run by volunteers who invest their time and money</p>
     <p>to give you the ultimate Rust Roleplay experience.</p>

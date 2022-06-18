@@ -214,6 +214,7 @@ const fullScreen = ref<string | undefined>();
   max-width: 100%;
   max-height: 500px;
   object-fit: cover;
+  color: transparent;
 }
 
 </style>

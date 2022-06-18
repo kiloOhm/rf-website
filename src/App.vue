@@ -4,8 +4,7 @@ import { h, nextTick, provide, ref, Suspense, watch } from "vue";
 import { 
   NConfigProvider, 
   darkTheme, 
-  NNotificationProvider, 
-  NThemeEditor,
+  NNotificationProvider,
   NCollapseTransition
 } from 'naive-ui'
 import Sandwich from './components/elements/sandwich.vue'
@@ -17,7 +16,7 @@ import Home from "./views/pages/Home.vue";
 import Pages from "./views/Pages.vue";
 import { throttle } from 'lodash';
 import Plugins from "./views/pages/Plugins.vue";
-import Rules from "./views/pages/Rules.vue";
+import Servers from "./views/pages/Servers.vue";
 import Media from "./views/pages/Media.vue";
 import Donate from "./views/pages/Donate.vue";
 import Contact from "./views/pages/Contact.vue";
@@ -56,10 +55,10 @@ const pages = ref<navItem[]>([
     component: h(Donate)
   },
   {
-    title: 'Rules',
-    header: 'Rules',
-    key: 'rules',
-    component: h(Rules)
+    title: 'Servers',
+    header: 'Servers',
+    key: 'servers',
+    component: h(Servers)
   },
   {
     title: 'Contact',
@@ -103,9 +102,13 @@ document.addEventListener('click', (e) => {
   const link = (e.target as HTMLElement)?.closest('a')?.href;
   if(!link) return;
   const url = new URL(link);
-  if(url.host != window.location.host) return;
-  e.preventDefault();
-  router.push(url.pathname);
+    e.preventDefault();
+  if(url.host == window.location.host) {
+    router.push(url.pathname);
+  }
+  else {
+    window.open(link, '_blank')?.focus();
+  }
 });
 </script>
 
@@ -117,6 +120,7 @@ document.addEventListener('click', (e) => {
     <!-- <n-theme-editor> -->
       <n-notification-provider>
         <main>
+          <div class="background"></div>
           <Suspense>
             <Modals/>
           </Suspense>
@@ -183,6 +187,16 @@ document.addEventListener('click', (e) => {
 </style>
 
 <style scoped>
+.background {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  background-image: url(https://files.facepunch.com/lewis/1b2411b1/image-section.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: blur(3px) brightness(40%);
+}
+
 main {
   width: 100%;
   height: 100vh;
@@ -194,6 +208,7 @@ main {
 
 .header-container {
   grid-area: h;
+  background: var(--bg1);
 }
 
 .header {

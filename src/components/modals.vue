@@ -25,7 +25,7 @@ interface modalInfo {
   show: boolean;
 }
 
-const modals = reactive(modalsMD.replaceAll('\r', '').split('# ').filter((p) => p).map((p) => {
+const modals = reactive(modalsMD.replaceAll('\r', '').split(/^# /gm).filter((p) => p).map((p) => {
   const lines = p.split('\n');
   return {
     title: '# ' + lines.shift(),

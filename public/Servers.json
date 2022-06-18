@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Roleplay",
+    "img": "/roleplay_server.webp",
+    "ip": "54.39.130.212:28015",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation",
+    "rules": "https://docs.google.com/document/d/e/2PACX-1vT9CpS4HYU5FwRHzJ2aHIhYJC8CQUxN2FMkWAOFmT3uKUag3SE7bHyAwhMNxGlEKyiclVVpZ-Bs0q7C/pub"
+  },
+  {
+    "name": "Vanilla",
+    "img": "/vanilla_server.webp",
+    "ip": "54.39.130.212:28015",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation",
+    "rules": "https://docs.google.com/document/d/e/2PACX-1vT9CpS4HYU5FwRHzJ2aHIhYJC8CQUxN2FMkWAOFmT3uKUag3SE7bHyAwhMNxGlEKyiclVVpZ-Bs0q7C/pub"
+  },
+  {
+    "name": "Vanilla Kits",
+    "img": "/vanilla_kits_server.webp",
+    "ip": "54.39.130.212:28015",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation",
+    "rules": "https://docs.google.com/document/d/e/2PACX-1vT9CpS4HYU5FwRHzJ2aHIhYJC8CQUxN2FMkWAOFmT3uKUag3SE7bHyAwhMNxGlEKyiclVVpZ-Bs0q7C/pub"
+  }
+]

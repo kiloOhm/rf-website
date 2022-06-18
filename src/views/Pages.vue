@@ -123,7 +123,7 @@ const ready = (key: string) => {
   color: var(--text-dark);
   font-size: 3em;
   font-weight: 700;
-  opacity: .2;
+  opacity: .5;
   z-index: 2;
 }
 
