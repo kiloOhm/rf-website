@@ -18,6 +18,7 @@ interface ServerInfo {
 }
 
 const servers= (await axios.get('/Servers.json')).data as ServerInfo[];
+console.log(servers);
 for(const s of servers) {
   const data = (await axios.get(`http://${s.ip}/status.json`)).data;
   s.players = data.players
