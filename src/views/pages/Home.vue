@@ -119,7 +119,7 @@ onMounted(() => {
     object-fit: fill;
     z-index: 0;
     filter: blur(3px) brightness(.4);
-    transform: scale(1.6);
+    transform: scale(2);
   }
 
   .overlay {
