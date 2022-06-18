@@ -152,11 +152,11 @@ onMounted(() => {
   margin-bottom: 1rem;
 }
 
-.card :deep() .n-avatar.user img {
-  padding: 4px;
+.card :deep() .n-avatar img.user {
+  transform: scale(1.5);
 }
-.card :deep() .n-avatar.sleeper img {
-  padding: 6px;
+.card :deep() .n-avatar img.sleeper {
+  transform: scale(1.5);
 }
 
 .badge :deep() .n-badge-sup {
