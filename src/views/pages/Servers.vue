@@ -126,17 +126,6 @@ onMounted(() => {
             </n-avatar>
           </n-badge>
         </div>
-        <div 
-          class="offline"
-          v-else 
-        >
-          <n-tag 
-            type="error"
-            round
-          >
-            Offline
-          </n-tag>
-        </div>
       </template>
       <template #action>
         <p-button
