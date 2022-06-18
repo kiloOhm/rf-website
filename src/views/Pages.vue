@@ -29,9 +29,9 @@ watch(router.currentRoute, (newValue) => {
 const scrollTo = (newValue) => {
   const ref = getPage(newValue);
   if(!ref) return;
-  scrollContainer()?.scrollTo({
-    top: ref.offsetTop,
+  ref.scrollIntoView({
     behavior: 'smooth',
+    block: 'start',
   })
 };
 watch(scrollHeight, (height) => {

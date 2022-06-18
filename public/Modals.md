@@ -1,8 +1,8 @@
 # AbsolutSorter
-![absolutsorter](/absolutsorter.png)
+![absolutsorter](/absolutsorter.webp)
 
 test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test 
  
 # Auth Groups
-![authgroups](/authgroups.png)
+![authgroups](/authgroups.public/harold.webp)
 test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test 

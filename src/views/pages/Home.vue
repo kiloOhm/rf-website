@@ -22,13 +22,18 @@ onMounted(() => {
     <div class="overlay"></div>
     <div class="video-container">
       <video 
+        class="bg-video"
         src="/WebsiteMainPageBackground.mp4"
         autoplay
         muted
         loop
-        class="bg-video"
-        poster="/poster.png"
+        poster="/poster.webp"
       ></video>
+      <!-- <img 
+        class="bg-video"
+        src="/background.gif"
+        alt="background gif"
+      > -->
     </div>
     <div class="title">
       <p>Rust Factions</p>
@@ -123,20 +128,12 @@ onMounted(() => {
 
   .bg-video {
     position: absolute;
-    /* object-fit: cover; */
+    height: 100%;
+    object-fit: fill;
     z-index: -1;
-    filter: blur(5px);
+    filter: blur(3px);
+    transform: scale(1.6);
   }
-
-@media only screen and (min-width: 1920px) {
-  .video-container {
-    width: 100%;
-    height: 100vh;
-  }
-  .bg-video {
-    transform: scale(2);
-  }
-}
 
   .overlay {
     position: absolute;

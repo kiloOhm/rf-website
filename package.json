@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite --host",
-    "index": "find public/media -regextype posix-egrep -regex \".*\\.(png|jpg|jpeg|gif)$\" > public/media/index.txt",
+    "index": "find public/media -regextype posix-egrep -regex \".*\\.(png|jpg|jpeg|gif|webp)$\" > public/media/index.txt",
     "build": "npm run index && vue-tsc --noEmit && vite build",
     "preview": "vite preview --port 5050",
     "typecheck": "vue-tsc --noEmit",
@@ -15,6 +15,7 @@
     "lodash": "^4.17.21",
     "marked": "^4.0.16",
     "pinia": "^2.0.13",
+    "swiper": "^8.2.4",
     "vue": "^3.2.33",
     "vue-router": "^4.0.14",
     "vue-writer": "^1.2.0"

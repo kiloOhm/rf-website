@@ -1,9 +1,15 @@
 <script setup lang="ts">
 import axios from 'axios';
 import { groupBy } from 'lodash';
-import { NCarousel, NCard, NCarouselItem, NIcon, NModal } from 'naive-ui';
+import { NCard, NIcon, NModal } from 'naive-ui';
 import { onMounted, ref } from 'vue';
 import { PauseOutline } from '@vicons/ionicons5';
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import { Lazy, Pagination, Autoplay } from "swiper";
+import "swiper/css";
+import "swiper/css/lazy";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 
 const index = (await axios.get('/media/index.txt'))?.data?.replaceAll('\r', '').replaceAll('public/media/', '') as string;
 const lines = index.split('\n').filter((l) => l);
@@ -23,25 +29,6 @@ const sliders = Object.keys(slidersRaw).map((k) => ({
 } as slider))
 sliders?.sort((a, b) => (a?.prio ?? 0) - (b?.prio ?? 0))
 const carouselRefs = ref()
-const randomInterval = (callback: () => void) => {
-  var min = 2000,
-    max = 5000;
-  var rand = Math.floor(Math.random() * (max - min + 1) + min);
-  try {
-    callback?.();
-  // eslint-disable-next-line no-empty
-  } catch {}
-  setTimeout(() => randomInterval(callback), rand);
-}
-for(let i = 0; i < sliders.length; i++) {
-  setTimeout(() => {
-    randomInterval(() => {
-      if(hovered.value == sliders[i].title) return;
-      carouselRefs.value?.[i]?.next();
-    })
-  }, 2000)
-}
-const hovered = ref()
 const emit = defineEmits(['ready'])
 let init = false;
 onMounted(() => {
@@ -54,117 +41,56 @@ const fullScreen = ref<string | undefined>();
 <template>
   <div class="media" ref="pageRef">
     <div class="carousels">
-      <div class="card desktop"
+      <div class="card"
         v-for="(slider, index) in sliders"
         :key="index"
-        :class="(hovered == slider.title ? 'hovered' : '')"
       >
-        <transition>
-          <div 
-            class="header-extra"
-            v-if="hovered == slider.title"
-          >
-            <n-icon 
-              size="30"
-              @touchstart="hovered = null"
-            >
-              <pause-outline/>
-            </n-icon>
-          </div>
-        </transition>
-        <n-card
-          @mouseenter="hovered = slider.title"
-          @mouseleave="hovered = null"
-          @touchstart="hovered = slider.title"
-        >
+        <n-card>
           <template #header>
             <div class="header">
               <h1>{{ slider.title }}</h1>
             </div>
           </template>
-          <n-carousel
-            class="carousel"
-            dot-type="line"
-            slides-per-view="auto"
-            centered-slides
-            draggable
-            trigger="hover"
-            ref="carouselRefs"
-          >
-            <n-carousel-item
-              v-for="(url, index2) in slider.images"
-              :key="index2"
-              style="width: max-content; max-width: 100%; margin: auto;"
+            <swiper
+              :style="{
+                '--swiper-navigation-color': '#fff',
+                '--swiper-pagination-color': '#fff',
+              }"
+              :lazy="true"
+              :pagination="{
+                clickable: true,
+              }"
+              :autoplay="{
+                delay: 2000,
+                disableOnInteraction: true,
+              }"
+              :centeredSlides="true"
+              :modules="[ Lazy, Pagination, Autoplay ]"
+              class="swiper"
+              ref="carouselRefs"
+              :loop="true"
             >
-              <img
-                class="carousel-img"
-                :class="(carouselRefs?.[index].getCurrentIndex() == index2 ? '' : 'outer')"
-                :src="url"
-                loading="lazy"
-                @click="fullScreen = url"
+              <swiper-slide
+                v-for="(url, index2) in slider.images"
+                :key="index2"
               >
-            </n-carousel-item>
-          </n-carousel>
-        </n-card>
-      </div>
-      <div class="card mobile"
-        v-for="(slider, index) in sliders"
-        :key="index"
-        :class="(hovered == slider.title ? 'hovered' : '')"
-      >
-        <transition>
-          <div 
-            class="header-extra"
-            v-if="hovered == slider.title"
-          >
-            <n-icon 
-              size="30"
-              @touchstart="hovered = null"
-            >
-              <pause-outline/>
-            </n-icon>
-          </div>
-        </transition>
-        <n-card
-          @mouseenter="hovered = slider.title"
-          @mouseleave="hovered = null"
-          @touchstart="hovered = slider.title"
-        >
-          <template #header>
-            <div class="header">
-              <h1>{{ slider.title }}</h1>
-            </div>
-          </template>
-          <n-carousel
-            class="carousel"
-            dot-type="line"
-            slides-per-view="auto"
-            centered-slides
-            draggable
-            trigger="hover"
-            ref="carouselRefs"
-          >
-            <n-carousel-item
-              v-for="(url, index2) in slider.images"
-              :key="index2"
-              style="width: max-content; max-width: 100%; margin: auto;"
-            >
-              <img
-                class="carousel-img"
-                :class="(carouselRefs?.[index].getCurrentIndex() == index2 ? '' : 'outer')"
-                :src="url"
-                loading="lazy"
-                @click="fullScreen = url"
-              >
-            </n-carousel-item>
-          </n-carousel>
+                <img
+                  :data-src="url"
+                  :alt="url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.'))"
+                  class="swiper-lazy"
+                  @click="fullScreen = url"
+                />
+                <div
+                  class="swiper-lazy-preloader swiper-lazy-preloader-white"
+                ></div> 
+              </swiper-slide>
+            </swiper>
         </n-card>
       </div>
     </div>
     <n-modal
       :show="fullScreen != undefined"
       @update:show="(v) => !v ? fullScreen = undefined : null"
-      
     >
       <div id="fullscreen">
         <img :src="fullScreen"/>
@@ -176,13 +102,18 @@ const fullScreen = ref<string | undefined>();
 <style scoped>
 
 @media only screen and (min-width: 600px) {
-  .mobile {
-    display: none;
+  .card {
+    width: 90%;
   }
 }
 @media only screen and (max-width: 600px) {
-  .desktop {
-    display: none;
+  .card {
+    width: 100%;
+    margin: 0;
+  }
+
+  .card :deep() .n-card__content {
+    padding: 0;
   }
 }
 
@@ -200,17 +131,8 @@ const fullScreen = ref<string | undefined>();
 }
 
 .card {
-  width: 90%;
   max-width: 1920px;
   transition: all .2s ease;
-}
-
-.card.mobile {
-  width: 100%;
-}
-
-.card.mobile :deep() .n-card__content {
-  padding: 0;
 }
 
 .carousel-img {
@@ -256,16 +178,42 @@ const fullScreen = ref<string | undefined>();
 }
 
 #fullscreen {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 90%;
+  height: 90%;
+  margin: auto;
 }
 
 #fullscreen img {
   object-fit: contain;
-  max-width: 90%;
-  max-height: 90%;
+  width: 100%;
+  height: 100%;
 }
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  margin: auto;
+}
+
+.swiper-slide img {
+  display: block;
+  max-width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+}
+
 </style>
