@@ -18,17 +18,22 @@ interface ServerInfo {
 }
 
 const servers= (await axios.get('/Servers.json')).data as ServerInfo[];
-for(const s of servers) {
-  try {
-    const data = (await axios.get(`http://${s.ip}/status.json`)).data;
-    s.players = data.players
-    s.maxPlayers = data.maxplayers
-    s.sleepers = data.sleepers
-  }
-  catch (err) {
-    console.error(err);
+try {
+  const serverInfo= (await axios.get('https://rf-backend.onrender.com')).data;
+  for(const s of servers) {
+    try {
+      const data = serverInfo[s.name];
+      s.players = data.players
+      s.maxPlayers = data.maxplayers
+      s.sleepers = data.sleepers
+    }
+    catch (err) {
+      console.error(err);
+    }
   }
 }
+// eslint-disable-next-line no-empty
+catch(err) {}
 
 const newTab = (url: string | undefined) => {
   window.open(url, '_blank')?.focus();

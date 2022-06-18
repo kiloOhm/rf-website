@@ -12,6 +12,7 @@ onMounted(() => {
 <template>
   <div class="contact">
     <iframe 
+      title="Discord embed"
       src="https://discord.com/widget?id=381654214369345558&theme=dark" 
       width="350" 
       height="500" 
