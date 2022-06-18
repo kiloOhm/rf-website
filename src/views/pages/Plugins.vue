@@ -45,6 +45,7 @@ onMounted(() => {
           <div class="title">
             <render-markdown 
               :markdown="plugin.title"
+              style="font-size: large; font-weight: 700;"
             />
           </div>
           <div class="image">
@@ -56,6 +57,7 @@ onMounted(() => {
         <div class="text">
           <render-markdown 
             :markdown="plugin.text"
+            style="font-size: large; font-weight: 700;"
           />
         </div>
       </div>

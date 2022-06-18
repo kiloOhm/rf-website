@@ -4,7 +4,7 @@ import { NCard, NAvatar, NIcon, NBadge } from 'naive-ui';
 import { onMounted } from 'vue';
 import pButton from '@/components/elements/p-button.vue';
 import sButton from '@/components/elements/s-button.vue';
-import { PersonOutline, BedOutline } from '@vicons/ionicons5'
+import md from '@/components/render-markdown.vue';
 
 interface ServerInfo {
   name: string;
@@ -77,7 +77,10 @@ onMounted(() => {
           class="header"
         >{{server.name}}</p>
       </template>
-      <p>{{server.description}}</p>
+        <md
+          style="font-size: large; font-weight: 400;"
+          :markdown="server.description ?? ''"
+        />
       <template #footer>
         <div 
           class="footer"
@@ -187,11 +190,7 @@ onMounted(() => {
 }
 
 .card :deep() .n-card__content {
-  font-size: large;
-  padding: 1em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding: 2em;
 }
 
 .card :deep() .n-card__footer {

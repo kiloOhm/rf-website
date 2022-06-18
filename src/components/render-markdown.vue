@@ -2,7 +2,8 @@
 import  { markdown } from '../util/markdown';
 
 interface Props {
-  markdown: string
+  markdown: string;
+  style?: string;
 }
 const props = defineProps<Props>()
 const html = await markdown(props.markdown);
@@ -10,16 +11,14 @@ const html = await markdown(props.markdown);
 
 <template>
   <div class="markdown">
-    <div v-html="html" ></div>
+    <div 
+      v-html="html" 
+      :style="props.style"
+    ></div>
   </div>
 </template>
 
 <style scoped>
-
-.markdown :deep() p {
-  font-size: x-large;
-  font-weight: 700;
-}
 
 .markdown :deep() a {
   color: var(--text-dark);

@@ -65,6 +65,7 @@ const fullScreen = ref<string | undefined>();
                 disableOnInteraction: true,
               }"
               :centeredSlides="true"
+              slides-per-group-auto
               :modules="[ Lazy, Pagination, Autoplay ]"
               class="swiper"
               ref="carouselRefs"
