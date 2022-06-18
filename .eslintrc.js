@@ -10,5 +10,9 @@ module.exports = {
   ],
   "env": {
     "vue/setup-compiler-macros": true
+  },
+  "rules": {
+    '@typescript-eslint/no-unused-vars': 'off',
+    'vue/multi-word-component-names': 'off'
   }
 }

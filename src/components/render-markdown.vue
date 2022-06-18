@@ -1,21 +1,36 @@
 <script setup lang="ts">
-import axios from 'axios';
+import  { markdown } from '../util/markdown';
 
-const props = defineProps({
-  url: {
-    type: String,
-    required: true
-  }
-})
-
-const { data } = await axios.get(props.url);
+interface Props {
+  markdown: string;
+  style?: string;
+}
+const props = defineProps<Props>()
+const html = await markdown(props.markdown);
 </script>
 
 <template>
   <div class="markdown">
-    <VueShowdown :markdown="data" />
+    <div 
+      v-html="html" 
+      :style="props.style"
+    ></div>
   </div>
 </template>
 
 <style scoped>
+
+.markdown :deep() a {
+  color: var(--text-dark);
+  transition: color .2s ease;
+}
+.markdown :deep() a:hover {
+  color: var(--accent-dark);
+}
+
+.markdown :deep() img {
+  width: 100%;
+  object-fit: contain;
+}
+
 </style>
