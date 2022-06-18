@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import axios from 'axios';
-import { NCard, NAvatar, NIcon, NBadge } from 'naive-ui';
+import { NCard, NAvatar, NTag, NBadge } from 'naive-ui';
 import { onMounted } from 'vue';
 import pButton from '@/components/elements/p-button.vue';
 import sButton from '@/components/elements/s-button.vue';
@@ -86,6 +86,14 @@ onMounted(() => {
           class="footer"
           v-if="server.up"
         >
+        <div class="online">
+          <n-tag 
+            type="success"
+            round
+          >
+            Online
+          </n-tag>
+        </div>
           <n-badge 
             v-if="server.players || server.maxPlayers"
             :value="`${server.players}/${server.maxPlayers}`"
@@ -117,6 +125,17 @@ onMounted(() => {
               >
             </n-avatar>
           </n-badge>
+        </div>
+        <div 
+          class="offline"
+          v-else 
+        >
+          <n-tag 
+            type="error"
+            round
+          >
+            Offline
+          </n-tag>
         </div>
       </template>
       <template #action>
@@ -193,7 +212,7 @@ onMounted(() => {
   padding: 2em;
 }
 
-.card :deep() .n-card__footer {
+.card :deep() .n-card__footer .footer {
   font-size: medium;
   display: flex;
   justify-content: space-evenly;
