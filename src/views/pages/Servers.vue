@@ -20,25 +20,23 @@ interface ServerInfo {
 
 const servers= (await axios.get('/Servers.json')).data as ServerInfo[];
 try {
-  const serverInfo = (await axios.get('https://rf-backend.onrender.com', {
-    timeout: 2000,
-  })).data;
-  for(const s of servers) {
+  axios.get('https://rf-backend.onrender.com').then((response) =>{
+    for(const s of servers) {
     try {
-      if(s.name in serverInfo) {
+      if(s.name in response.data) {
         s.up = true;
       }
-      const data = serverInfo[s.name];
+      const data = response.data[s.name];
       s.players = data.players
       s.maxPlayers = data.maxplayers
       s.sleepers = data.sleepers
     }
-    catch (err) {
-      console.error(err);
-    }
+    // eslint-disable-next-line no-empty    
+    catch (err) {}
   }
+  })
 }
-// eslint-disable-next-line no-empty
+// eslint-disable-next-line no-empty    
 catch(err) {}
 
 const newTab = (url: string | undefined) => {
