@@ -17,7 +17,6 @@ const newTab = (url: string) => {
   <div class="dono-package">
     <n-card
       class="card"
-      @click="newTab('https://rustfactions.tebex.io/')"
     >
       <template #header>
         <div class="text">
@@ -33,11 +32,13 @@ const newTab = (url: string) => {
         <h1 class="header">{{ props.title }}</h1>
       </template>
       <template #footer>
-
-      </template>
+        
+        </template>
 
       <template #action>
-        <div class="tebex">
+        <div class="tebex"
+          @click="newTab('https://rustfactions.tebex.io/')"
+        >
           <p>view on </p>
           <img src="../assets/tebex.svg" alt="Tebex Webstore">
         </div>
@@ -53,10 +54,6 @@ const newTab = (url: string) => {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-.card {
-  cursor: pointer;
 }
 
 .card :deep() .n-card-header {
@@ -117,5 +114,6 @@ const newTab = (url: string) => {
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  cursor: pointer;
 }
 </style>

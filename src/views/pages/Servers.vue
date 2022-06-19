@@ -22,7 +22,6 @@ const servers = (await axios.get('/Servers.json')).data as ServerInfo[];
 const _servers = reactive(servers);
 try {
   axios.get('https://rf-backend.onrender.com').then((response) =>{
-    console.log(response);
     for(const s of _servers) {
     try {
       if(s.name in response.data) {

@@ -64,6 +64,7 @@ onMounted(() => {
 }
 
 .donate p {
+  width: 90%;
   max-width: 64ch;
   font-size: xx-large;
   font-weight: 700;
