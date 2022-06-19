@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import axios from 'axios';
 import { NCard, NAvatar, NTag, NBadge } from 'naive-ui';
-import { onMounted } from 'vue';
+import { onMounted, reactive } from 'vue';
 import pButton from '@/components/elements/p-button.vue';
 import sButton from '@/components/elements/s-button.vue';
 import md from '@/components/render-markdown.vue';
@@ -18,10 +18,12 @@ interface ServerInfo {
   sleepers: number | undefined;
 }
 
-const servers= (await axios.get('/Servers.json')).data as ServerInfo[];
+const servers = (await axios.get('/Servers.json')).data as ServerInfo[];
+const _servers = reactive(servers);
 try {
   axios.get('https://rf-backend.onrender.com').then((response) =>{
-    for(const s of servers) {
+    console.log(response);
+    for(const s of _servers) {
     try {
       if(s.name in response.data) {
         s.up = true;
@@ -63,7 +65,7 @@ onMounted(() => {
         footer: 'soft'
       }"
       class="card"
-      v-for="(server, index) in servers"
+      v-for="(server, index) in _servers"
       :key="index"
     >
       <template #header>
@@ -146,6 +148,10 @@ onMounted(() => {
 </template>
 
 <style scoped>
+.online {
+  filter: brightness(2);
+}
+
 @media only screen and (max-width: 600px) {
   .connect-btn {
     display: none;

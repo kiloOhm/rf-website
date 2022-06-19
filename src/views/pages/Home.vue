@@ -115,7 +115,6 @@ onMounted(() => {
 
   .bg-video {
     position: absolute;
-    height: 100%;
     object-fit: fill;
     z-index: 0;
     filter: blur(3px) brightness(.4);
