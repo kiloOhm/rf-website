@@ -78,7 +78,7 @@ onMounted(() => {
         >{{server.name}}</p>
       </template>
         <md
-          style="font-size: large; font-weight: 400;"
+          :style="'font-size: large; font-weight: 400;'"
           :markdown="server.description ?? ''"
         />
       <template #footer>
@@ -104,7 +104,7 @@ onMounted(() => {
             >
               <img 
                 class="user"
-                src="/user_icon.png" 
+                src="/icons/user_icon.png" 
                 alt="user icon"
               >
             </n-avatar>
@@ -120,7 +120,7 @@ onMounted(() => {
             >
               <img 
                 class="sleeper"
-                src="/sleep_icon3.png" 
+                src="/icons/sleep_icon3.png" 
                 alt="sleeper icon"
               >
             </n-avatar>
@@ -155,7 +155,6 @@ onMounted(() => {
 }
 
 .servers {
-  max-width: 100vw;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -163,7 +162,6 @@ onMounted(() => {
   gap: 2em;
   margin: auto;
   flex-wrap: wrap;
-  margin-bottom: 1rem;
 }
 
 .card :deep() .n-avatar img.user {

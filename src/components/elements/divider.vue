@@ -29,13 +29,13 @@ const style = {
 
 @media screen and (-webkit-min-device-pixel-ratio:0) { 
   .divider {
-    -webkit-mask-image: url("https://files.facepunch.com/lewis/1b0311b1/bar-dark.svg");
+    -webkit-mask-image: url("/divider_mask.svg");
   }
 }
 
 @-moz-document url-prefix() {
   .divider {
-    mask-image: url("https://files.facepunch.com/lewis/1b0311b1/bar-dark.svg");
+    mask-image: url("/divider_mask.svg");
   }
 }
 </style>

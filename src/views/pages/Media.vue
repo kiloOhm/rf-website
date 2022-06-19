@@ -60,10 +60,6 @@ const fullScreen = ref<string | undefined>();
               :pagination="{
                 clickable: true,
               }"
-              :autoplay="{
-                delay: 2000,
-                disableOnInteraction: true,
-              }"
               :centeredSlides="true"
               slides-per-group-auto
               :modules="[ Lazy, Pagination, Autoplay ]"

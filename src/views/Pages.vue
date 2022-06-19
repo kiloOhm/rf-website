@@ -1,5 +1,5 @@
 <script setup lang="ts">import type { navItem } from '@/components/navMenu.vue';
-import { nextTick, ref, toRefs, watch } from 'vue';
+import { ref, toRefs, watch } from 'vue';
 import { useRouter } from 'vue-router';
 import Divider from '../components/elements/divider.vue';
 import rfLoading from '@/components/elements/rf-loading.vue';
@@ -86,7 +86,7 @@ const ready = (key: string) => {
       <divider
         v-if="index > 0"
         :color="bg1Zebra"
-        :flip="(index % 2) == 0"
+        :flip="(index % 2) == 1"
       />
       <div
         class="content"

@@ -37,10 +37,10 @@ const pages = ref<navItem[]>([
     component: h(Home),
   },
   {
-    title: 'Media',
-    header: 'Media',
-    key: 'media',
-    component: h(Media)
+    title: 'Servers',
+    header: 'Servers',
+    key: 'servers',
+    component: h(Servers)
   },
   {
     title: 'Plugins',
@@ -55,10 +55,10 @@ const pages = ref<navItem[]>([
     component: h(Donate)
   },
   {
-    title: 'Servers',
-    header: 'Servers',
-    key: 'servers',
-    component: h(Servers)
+    title: 'Media',
+    header: 'Media',
+    key: 'media',
+    component: h(Media)
   },
   {
     title: 'Contact',

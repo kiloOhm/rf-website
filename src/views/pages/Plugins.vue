@@ -45,7 +45,7 @@ onMounted(() => {
           <div class="title">
             <render-markdown 
               :markdown="plugin.title"
-              style="font-size: large; font-weight: 700;"
+              :style="'font-size: large; font-weight: 700;'"
             />
           </div>
           <div class="image">
@@ -57,7 +57,7 @@ onMounted(() => {
         <div class="text">
           <render-markdown 
             :markdown="plugin.text"
-            style="font-size: x-large; font-weight: 700;"
+            :style="'font-size: x-large; font-weight: 700;'"
           />
         </div>
       </div>
@@ -200,7 +200,7 @@ onMounted(() => {
   padding: 1em;
   background-color: var(--bg2);
   overflow-wrap: break-word;
-  width: 100%;
+  max-width: 120ch;
 }
 
 .plugin .markdown div {
