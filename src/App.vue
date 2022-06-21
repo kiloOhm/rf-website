@@ -23,6 +23,12 @@ import Contact from "./views/pages/Contact.vue";
 import Modals from "./components/modals.vue";
 import { themeOverrides } from "./assets/themeOverrides";
 
+console.log('%cThis site was built by\nhttps://github.com/kiloOhm',`
+  background-color: #182855;
+  color: #CCC;
+  font-size: x-large;
+`);
+
 const expandNav = ref(false);
 const toggleExpandNav = () => {
   if(expandNav.value) expandNav.value = false;
