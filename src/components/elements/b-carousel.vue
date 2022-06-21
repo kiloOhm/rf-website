@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { toRefs, ref, type CSSProperties, computed } from 'vue';
+import { toRefs, ref, type CSSProperties, computed, watch } from 'vue';
 
 
 interface Props {
@@ -183,10 +183,24 @@ const getAnchorClass = (index: number) => {
   }
   return output;
 }
+
+let counterTimeout;
+watch(currentIndex, () => {
+  const counter = document.getElementById('counter');
+  if(!counter) return;
+  clearTimeout(counterTimeout);
+  counter.style.opacity = '.8';
+  counterTimeout = setTimeout(() => {
+    counter.style.opacity = '0';
+  }, 2000)
+})
 </script>
 
 <template>
   <div class="b-carousel">
+    <div id="counter">
+      {{currentIndex + 1}}/{{loadedImages.length}}
+    </div>
     <div 
       class="slides"
       :style="slidesStyle"
@@ -225,6 +239,20 @@ const getAnchorClass = (index: number) => {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+#counter {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translate(-50%);
+  background-color: var(--bg3);
+  z-index: 1;
+  padding: .2rem .8rem .2rem .8rem;
+  border-radius: 1rem;
+  opacity: 0;
+  transition: opacity 500ms ease;
+  box-shadow: 0px 0px 20px -4px #000000;
 }
 
 .slides {
