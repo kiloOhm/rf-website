@@ -2,6 +2,7 @@
 import groupBy from 'lodash.groupby';
 import bCarousel from '@/components/elements/b-carousel.vue';
 import bCard from '@/components/elements/b-card.vue';
+import { ref, type Ref } from 'vue';
 
 const index = (await (await fetch('/media/index.txt')).text())?.replaceAll('\r', '').replaceAll('public/media/', '') as string;
 const lines = index.split('\n').filter((l) => l);
@@ -20,6 +21,8 @@ const sliders = Object.keys(slidersRaw).map((k) => ({
   images: slidersRaw[k].map((s) => '/media/' + s)
 } as slider))
 sliders?.sort((a, b) => (a?.prio ?? 0) - (b?.prio ?? 0))
+const indices: Ref<number>[] = [];
+sliders.map(() => indices.push(ref(0)))
 </script>
 
 <template>
@@ -37,6 +40,11 @@ sliders?.sort((a, b) => (a?.prio ?? 0) - (b?.prio ?? 0))
         </template>
         <b-carousel
           :images="slider.images"
+          :transitionDuration="200"
+          gap="30px"
+          maxHeightDesktop="500px"
+          maxHeightMobile="300px"
+          :velocityThreshold=".2"
         />
       </b-card>
     </div>
@@ -59,10 +67,6 @@ sliders?.sort((a, b) => (a?.prio ?? 0) - (b?.prio ?? 0))
   .card {
     width: 100%;
     margin: 0;
-  }
-
-  .card :deep() .b-card__content {
-    padding: 0 0 2em 0;
   }
 }
 
