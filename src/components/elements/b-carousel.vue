@@ -12,13 +12,20 @@ interface Props {
 const props = defineProps<Props>();
 const { images } = toRefs(props);
 
-for(const image of images.value) {
+let i = 0;
+const interval = setInterval(() => {
+  if(i >= images.value.length) {
+    clearTimeout(interval);
+    return;
+  }
+  const image = images.value[i];
   axios.get(image, {
     responseType: 'blob'
   }).then(response => {
     loadedImages.value.push(URL.createObjectURL(response.data));
   });
-}
+  i++;
+}, 50);
 
 const loadedImages = ref<string[]>([]);
 
