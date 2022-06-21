@@ -3,21 +3,21 @@
     "name": "Roleplay",
     "img": "/servers/roleplay_server.webp",
     "ip": "54.39.130.212:28015",
-    "description": "- 2x gathering rates\n\n- Offline-raid protection\n\n- Land claiming\n\n- No PVP outside of badlands",
+    "description": "- Various gathering rates\n\n- Offline-raid protection\n\n- Land claiming\n\n- PvE friendly enviroment\n\n- PvP within Badlands zones",
     "rules": "https://docs.google.com/document/d/e/2PACX-1vT9CpS4HYU5FwRHzJ2aHIhYJC8CQUxN2FMkWAOFmT3uKUag3SE7bHyAwhMNxGlEKyiclVVpZ-Bs0q7C/pub"
   },
   {
     "name": "Vanilla",
     "img": "/servers/vanilla_server.webp",
     "ip": "54.39.130.212:28115",
-    "description": "- Vanilla gathering rates\n\n- Offline-raid protection\n\n- Land claiming",
+    "description": "- Vanilla gathering rates\n\n- Offline-raid protection\n\n- Land claiming\n\n- No group limits\n\n- No Badlands zones",
     "rules": "https://docs.google.com/document/d/e/2PACX-1vT9CpS4HYU5FwRHzJ2aHIhYJC8CQUxN2FMkWAOFmT3uKUag3SE7bHyAwhMNxGlEKyiclVVpZ-Bs0q7C/pub"
   },
   {
     "name": "Vanilla+",
     "img": "/servers/vanilla_kits_server.webp",
     "ip": "54.39.130.212:28115",
-    "description": "- 2x gathering rates\n\n- 0.25x crafting time\n\n- Offline-raid protection\n\n- Land claiming",
+    "description": "- 2x gathering rates\n\n- 0.5x crafting time\n\n- Offline-raid protection\n\n- Land claiming\n\n- Supporter kits",
     "rules": "https://docs.google.com/document/d/e/2PACX-1vT9CpS4HYU5FwRHzJ2aHIhYJC8CQUxN2FMkWAOFmT3uKUag3SE7bHyAwhMNxGlEKyiclVVpZ-Bs0q7C/pub"
   }
 ]
