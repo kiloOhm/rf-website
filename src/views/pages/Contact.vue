@@ -8,15 +8,6 @@ const newTab = (url: string) => {
 
 <template>
   <div class="contact">
-    <!-- <iframe 
-      title="Discord embed"
-      src="https://discord.com/widget?id=381654214369345558&theme=dark" 
-      width="350" 
-      height="500" 
-      allowtransparency="true" 
-      frameborder="0" 
-      sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
-    ></iframe> -->
     <n-button
       class="button"
       @click="newTab(link)"
@@ -26,17 +17,26 @@ const newTab = (url: string) => {
     >
       Join us on Discord
     </n-button>
+    <iframe 
+      title="Discord embed"
+      src="https://discord.com/widget?id=381654214369345558&theme=dark" 
+      width="350" 
+      height="500" 
+      allowtransparency="true" 
+      frameborder="0" 
+      sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
+    ></iframe>
   </div>
 </template>
 
 <style scoped>
 .contact {
   width: 100%;
-  height: 20rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 2rem;
   padding-bottom: 2em;
 }
 
