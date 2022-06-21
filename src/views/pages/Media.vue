@@ -25,26 +25,30 @@ sliders?.sort((a, b) => (a?.prio ?? 0) - (b?.prio ?? 0))
 <template>
   <div class="media" ref="pageRef">
     <div class="carousels">
-      <div class="card"
-        v-for="(slider, index) in sliders"
-        :key="index"
+      <b-card
+      class="card"
+      v-for="(slider, index) in sliders"
+      :key="index"
       >
-        <b-card>
-          <template #header>
-            <div class="header">
-              <h1>{{ slider.title }}</h1>
-            </div>
-          </template>
-          <b-carousel
-            :images="slider.images"
-          />
-        </b-card>
-      </div>
+        <template #header>
+          <div class="header">
+            <h1>{{ slider.title }}</h1>
+          </div>
+        </template>
+        <b-carousel
+          :images="slider.images"
+        />
+      </b-card>
     </div>
   </div>
 </template>
 
 <style scoped>
+
+.card {
+  padding: 0;
+  margin: 0;
+}
 
 @media only screen and (min-width: 600px) {
   .card {

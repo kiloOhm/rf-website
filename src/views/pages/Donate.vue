@@ -19,7 +19,7 @@ const packages = packagesMD.split('#').filter((p) => p).map((p) => {
 
 <template>
   <div class="donate">
-    <p>This server is run by volunteers who invest their own time and money to give you the ultimate Rust Roleplay experience.</p>
+    <p>This server is run by volunteers who invest their own time and money to give you the ultimate Rust Roleplay experience. If you want to help us keep the lights on, please concider donating.</p>
     <div class="packages">
       <dono-package
         v-for="(p, index) in packages"
@@ -57,7 +57,7 @@ const packages = packagesMD.split('#').filter((p) => p).map((p) => {
 .donate p {
   width: 90%;
   max-width: 64ch;
-  font-size: xx-large;
+  font-size: x-large;
   font-weight: 700;
   text-align: center;
 }

@@ -62,15 +62,6 @@ const loadedImages = ref<string[]>([]);
   height: 500px;
 }
 
-@media only screen and (max-width: 600px) {
-  .b-carousel {
-    height: 300px;
-  }
-  .slide img {
-    height: 300px;
-  }
-}
-
 .slide {
   display: grid;
   place-items: center;
@@ -95,4 +86,12 @@ const loadedImages = ref<string[]>([]);
   align-items: center;
 }
 
+@media only screen and (max-width: 600px) {
+  .b-carousel {
+    height: 300px;
+  }
+  .slide img {
+    height: 300px;
+  }
+}
 </style>

@@ -5,7 +5,7 @@
 <template>
   <div class="loading">
     <div class="content">
-      <img alt="loading" class="loading" src="@/assets/lavalamp.svg" />
+      <!-- <img alt="loading" class="loading" src="@/assets/lavalamp.svg" /> -->
       <div class="text">
         <p>loading</p>
         <b-typer

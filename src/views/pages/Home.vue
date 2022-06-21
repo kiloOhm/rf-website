@@ -37,18 +37,18 @@
       <div class="actions">
         <p-button
           class="connect-btn"
-          @click="router.push('/servers')"
+          @click="router.push('/#servers')"
         >
           Connect
         </p-button>
         <p-button
           class="contact-btn"
-          @click="router.push('/contact')"
+          @click="router.push('/#contact')"
         >
           Contact
         </p-button>
         <s-button
-          @click="router.push('/donate')"
+          @click="router.push('/#donate')"
         >
           Donate
         </s-button>
