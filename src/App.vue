@@ -23,18 +23,6 @@ import Contact from "./views/pages/Contact.vue";
 import Modals from "./components/modals.vue";
 import { themeOverrides } from "./assets/themeOverrides";
 
-let cls = 0;
-new PerformanceObserver((entryList) => {
-  for (const entry of entryList.getEntries()) {
-    // @ts-expect-error
-    if (!entry.hadRecentInput) {
-      // @ts-expect-error
-      cls += entry.value;
-      console.log('Current CLS value:', cls, entry);
-    }
-  }
-}).observe({type: 'layout-shift', buffered: true});
-
 const expandNav = ref(false);
 const toggleExpandNav = () => {
   if(expandNav.value) expandNav.value = false;
