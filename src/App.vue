@@ -14,7 +14,7 @@ import { computed } from "@vue/reactivity";
 import scrollToTop from "./components/elements/scroll-to-top.vue";
 import Home from "./views/pages/Home.vue";
 import Pages from "./views/Pages.vue";
-import { throttle } from 'lodash';
+import throttle from 'lodash.throttle';
 import Plugins from "./views/pages/Plugins.vue";
 import Servers from "./views/pages/Servers.vue";
 import Media from "./views/pages/Media.vue";

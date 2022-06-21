@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import axios from 'axios';
-import { groupBy } from 'lodash';
+import groupBy from 'lodash.groupby';
 import bCarousel from '@/components/elements/b-carousel.vue';
 import bCard from '@/components/elements/b-card.vue';
 
