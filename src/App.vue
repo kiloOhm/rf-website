@@ -33,37 +33,37 @@ const textColor = getComputedStyle(document.documentElement).getPropertyValue('-
 const pages = ref<navItem[]>([
   {
     title: 'Home',
-    key: 'home',
+    key: '#home',
     component: h(Home),
   },
   {
     title: 'Servers',
     header: 'Servers',
-    key: 'servers',
+    key: '#servers',
     component: h(Servers)
   },
   {
     title: 'Plugins',
     header: 'Plugins',
-    key: 'plugins',
+    key: '#plugins',
     component: h(Plugins)
   },
   {
     title: 'Donate',
     header: 'Donate',
-    key: 'donate',
+    key: '#donate',
     component: h(Donate)
   },
   {
     title: 'Media',
     header: 'Media',
-    key: 'media',
+    key: '#media',
     component: h(Media)
   },
   {
     title: 'Contact',
     header: 'Contact',
-    key: 'contact',
+    key: '#contact',
     component: h(Contact)
   }
 ])
@@ -126,7 +126,7 @@ document.addEventListener('click', (e) => {
           </Suspense>
           <div class="header-container">
             <div class="header">
-              <img alt="logo" class="logo" src="@/assets/RF_Logo_Vector.svg" />
+              <img width="59" height="70" alt="logo" class="logo" src="@/assets/RF_Logo_Vector.svg" />
                 <div class="sandwich">
                 <sandwich
                   direction="bottom" 

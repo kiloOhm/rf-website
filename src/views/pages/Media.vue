@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import axios from 'axios';
 import { groupBy } from 'lodash';
-import { NCard } from 'naive-ui';
 import bCarousel from '@/components/elements/b-carousel.vue';
-import BCarousel from "../../components/elements/b-carousel.vue";
+import bCard from '@/components/elements/b-card.vue';
 
 const index = (await axios.get('/media/index.txt'))?.data?.replaceAll('\r', '').replaceAll('public/media/', '') as string;
 const lines = index.split('\n').filter((l) => l);
@@ -31,7 +30,7 @@ sliders?.sort((a, b) => (a?.prio ?? 0) - (b?.prio ?? 0))
         v-for="(slider, index) in sliders"
         :key="index"
       >
-        <n-card>
+        <b-card>
           <template #header>
             <div class="header">
               <h1>{{ slider.title }}</h1>
@@ -40,7 +39,7 @@ sliders?.sort((a, b) => (a?.prio ?? 0) - (b?.prio ?? 0))
           <b-carousel
             :images="slider.images"
           />
-        </n-card>
+        </b-card>
       </div>
     </div>
   </div>
@@ -59,7 +58,7 @@ sliders?.sort((a, b) => (a?.prio ?? 0) - (b?.prio ?? 0))
     margin: 0;
   }
 
-  .card :deep() .n-card__content {
+  .card :deep() .b-card__content {
     padding: 0 0 2em 0;
   }
 }

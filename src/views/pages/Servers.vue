@@ -5,6 +5,7 @@ import { reactive } from 'vue';
 import pButton from '@/components/elements/p-button.vue';
 import sButton from '@/components/elements/s-button.vue';
 import md from '@/components/render-markdown.vue';
+import bCard from '@/components/elements/b-card.vue';
 
 interface ServerInfo {
   name: string;
@@ -51,11 +52,7 @@ const connectLink = (ip: string | undefined) => {
 
 <template>
   <div class="servers">
-    <n-card
-      :segmented="{
-        content: true,
-        footer: 'soft'
-      }"
+    <b-card
       class="card"
       v-for="(server, index) in _servers"
       :key="index"
@@ -74,9 +71,6 @@ const connectLink = (ip: string | undefined) => {
           :markdown="server.description ?? ''"
         />
       <template #footer>
-        <div 
-          class="footer"
-        >
         <div class="online"
           v-if="server.up"
         >
@@ -128,7 +122,6 @@ const connectLink = (ip: string | undefined) => {
               >
             </n-avatar>
           </n-badge>
-        </div>
       </template>
       <template #action>
         <p-button
@@ -146,12 +139,12 @@ const connectLink = (ip: string | undefined) => {
           Rules
         </s-button>
       </template>
-    </n-card>
+    </b-card>
   </div>
 </template>
 
 <style scoped>
-.online {
+.online, .offline {
   filter: brightness(2);
 }
 
@@ -188,7 +181,7 @@ const connectLink = (ip: string | undefined) => {
   height: 510px;
 }
 
-.card :deep() .n-card-header {
+.card :deep() .b-card-header {
   padding: 0;
   overflow: hidden;
 }
@@ -210,17 +203,18 @@ const connectLink = (ip: string | undefined) => {
   filter: blur(2px) brightness(80%);
 }
 
-.card :deep() .n-card__content {
+.card :deep() .b-card__content {
   padding: 2em;
 }
 
-.card :deep() .n-card__footer .footer {
+.card :deep() .b-card__footer {
+  padding: 1rem;
   font-size: medium;
   display: flex;
   justify-content: space-evenly;
 }
 
-.card :deep() .n-card__action {
+.card :deep() .b-card__action {
   padding: 1em;
   display: flex;
   justify-content: center;

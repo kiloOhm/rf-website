@@ -1,5 +1,5 @@
 <script setup lang="ts">import type { navItem } from '@/components/navMenu.vue';
-import { ref, toRefs, watch } from 'vue';
+import { nextTick, ref, toRefs, watch } from 'vue';
 import { useRouter } from 'vue-router';
 import Divider from '../components/elements/divider.vue';
 import rfLoading from '@/components/elements/rf-loading.vue';
@@ -16,17 +16,15 @@ const props = defineProps<Props>();
 const { pages, activePage, scrollHeight, scrolling } = toRefs(props);
 const emit = defineEmits(['update:activePage']);
 const pageRefs = ref();
-const getPageIndex = (key: string) => pages.value.findIndex((p) => p.key == key);
-const getPage = (key: string) => pageRefs.value[getPageIndex(key)] as HTMLElement
 const scrollPushed = ref(false);
 watch(router.currentRoute, (newValue) => {
   if(scrolling.value) return;
-  setTimeout(() => {
-    scrollTo(newValue.params.page);
-  }, 1000);
+  nextTick(() => {
+    scrollTo(newValue.hash);
+  });
 })
 const scrollTo = (newValue) => {
-  const ref = getPage(newValue);
+  const ref = document.getElementById(newValue.substring(1));
   if(!ref) return;
   ref.scrollIntoView({
     behavior: 'smooth',
@@ -36,7 +34,8 @@ const scrollTo = (newValue) => {
 watch(scrollHeight, (height) => {
   const pageMiddle = height + window.innerHeight / 2;
   for(const page of pages.value) {
-    const ref = getPage(page.key);
+    const ref = document.getElementById(page.key.substring(1));
+    if(!ref) return;
     if(ref.offsetTop <= pageMiddle && pageMiddle < (ref.offsetTop + ref.offsetHeight)) {
       if(activePage.value != page.key) {
         emit('update:activePage', page.key);
@@ -57,8 +56,9 @@ const bg = (i: number) => {
 
 <template>
   <div class="pages">
-    <div
+    <section
       class="page"
+      :id="page.key.substring(1)"
       v-for="(page, index) in pages"
       :key="index"
       ref="pageRefs"
@@ -87,7 +87,7 @@ const bg = (i: number) => {
           </template>
         </Suspense>
       </div>
-    </div>
+    </section>
   </div>
 </template>
 

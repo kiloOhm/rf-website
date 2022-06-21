@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { reactive, watch } from 'vue';
 import { useRouter } from 'vue-router';
-import { NModal, NCard } from 'naive-ui';
+import { NModal } from 'naive-ui';
 import RenderMarkdown from './render-markdown.vue';
 import axios from 'axios';
+import bCard from './elements/b-card.vue';
 
 const modalsMD = (await axios.get('/Modals.md')).data as string;
 
@@ -52,7 +53,7 @@ const close = () => {
         style="max-width: 90%; max-height: 90%; overflow: auto; width: max-content"
         @after-leave="close()"
       >
-        <n-card
+        <b-card
           closable
           @close="modal.show = false"
         >
@@ -68,7 +69,7 @@ const close = () => {
               :markdown="modal.content"
             />
           </div>
-        </n-card>
+        </b-card>
       </n-modal>
     </div>
   </div>

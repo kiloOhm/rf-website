@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { NCard } from 'naive-ui';
 import md from '@/components/render-markdown.vue';
 import { toRefs } from 'vue';
+import bCard from '@/components/elements/b-card.vue';
 
 interface Props {
   title: string;
@@ -17,7 +17,7 @@ const newTab = (url: string) => {
 
 <template>
   <div class="dono-package">
-    <n-card
+    <b-card
       class="card"
     >
       <template #header>
@@ -33,19 +33,15 @@ const newTab = (url: string) => {
         ></div>
         <h1 class="header">{{ title }}</h1>
       </template>
-      <template #footer>
-        
-        </template>
-
       <template #action>
         <div class="tebex"
           @click="newTab('https://rustfactions.tebex.io/')"
         >
           <p>view on </p>
-          <img src="../assets/tebex.svg" alt="Tebex Webstore">
+          <img width="138.4" height="14.2" src="../assets/tebex.svg" alt="Tebex Webstore">
         </div>
       </template>
-    </n-card>
+    </b-card>
   </div>
 </template>
 
@@ -56,11 +52,6 @@ const newTab = (url: string) => {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-.card :deep() .n-card-header {
-  padding: 0;
-  overflow: hidden;
 }
 
 .card :deep() .header {
@@ -103,8 +94,8 @@ const newTab = (url: string) => {
   opacity: 1;
 }
 
-.card :deep() .n-card__action {
-  padding: 0;
+.card :deep() .b-card__action {
+  padding: 0 1rem 0 1rem;
   background-color: #09264e;
   font-size: x-large;
 }

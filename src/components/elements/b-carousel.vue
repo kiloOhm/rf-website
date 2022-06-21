@@ -53,6 +53,16 @@ const loadedImages = ref<string[]>([]);
 
 .b-carousel {
   width: 100%;
+  height: 500px;
+}
+
+@media only screen and (max-width: 600px) {
+  .b-carousel {
+    height: 300px;
+  }
+  .slide img {
+    height: 300px;
+  }
 }
 
 .slide {
@@ -66,14 +76,13 @@ const loadedImages = ref<string[]>([]);
   object-fit: contain;
 }
 
-@media only screen and (max-width: 600px) {
-  .slide img {
-  height: 300px;
-}
-}
-
 .b-carousel :deep() .swiper-pagination-bullet-active-main {
-  background-color: #fff !important;
+  background: #fff !important;
+  opacity: .8 !important;
+}
+.b-carousel :deep() .swiper-pagination-bullet {
+  background: #fff !important;
+  opacity: .5 !important;
 }
 
 .b-carousel :deep() .swiper-wrapper {
