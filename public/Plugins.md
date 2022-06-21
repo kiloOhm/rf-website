@@ -3,7 +3,7 @@
 
 Give players the ability to setup storage containers with configurable items and item categories via a in-inventory UI then with the click of a button sort and dump all the items from the players inventory in to the designated containers.
 
-Detailed information can be found here: [Plugin information](plugins/modal/wip).
+Detailed information can be found here: [Plugin information](modal/wip).
 
 &nbsp;
 

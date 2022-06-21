@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import axios from 'axios';
 import groupBy from 'lodash.groupby';
 import bCarousel from '@/components/elements/b-carousel.vue';
 import bCard from '@/components/elements/b-card.vue';
 
-const index = (await axios.get('/media/index.txt'))?.data?.replaceAll('\r', '').replaceAll('public/media/', '') as string;
+const index = (await (await fetch('/media/index.txt')).text())?.replaceAll('\r', '').replaceAll('public/media/', '') as string;
 const lines = index.split('\n').filter((l) => l);
 interface slider {
   prio?: number,

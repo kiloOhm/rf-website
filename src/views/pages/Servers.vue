@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import axios from 'axios';
-import { NCard, NAvatar, NTag, NBadge } from 'naive-ui';
+import { NAvatar, NTag, NBadge } from 'naive-ui';
 import { reactive } from 'vue';
 import pButton from '@/components/elements/p-button.vue';
 import sButton from '@/components/elements/s-button.vue';
@@ -19,16 +18,17 @@ interface ServerInfo {
   sleepers: number | undefined;
 }
 
-const servers = (await axios.get('/Servers.json')).data as ServerInfo[];
+const servers = await (await fetch('/Servers.json')).json() as ServerInfo[];
 const _servers = reactive(servers);
 try {
-  axios.get('https://rf-backend.onrender.com').then((response) =>{
+  fetch('https://rf-backend.onrender.com').then(async (response) =>{
+    const json = await response.json();
     for(const s of _servers) {
     try {
-      if(s.name in response.data) {
+      if(s.name in json) {
         s.up = true;
       }
-      const data = response.data[s.name];
+      const data = json[s.name];
       s.players = data.players
       s.maxPlayers = data.maxplayers
       s.sleepers = data.sleepers

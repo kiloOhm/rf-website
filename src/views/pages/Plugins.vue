@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import axios from 'axios';
 import { reactive } from 'vue';
 import RenderMarkdown from '../../components/render-markdown.vue';
 import { NCollapseTransition, NIcon } from 'naive-ui';
 import { CaretDownOutline } from '@vicons/ionicons5';
-const pluginsMD = (await axios.get('/Plugins.md')).data as string;
+const pluginsMD = await (await fetch('/Plugins.md')).text();
 interface pluginInfo {
   title: string;
   image: string;

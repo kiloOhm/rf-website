@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { toRefs, ref } from 'vue';
-import axios from 'axios';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Pagination } from "swiper";
 import "swiper/css";
@@ -19,10 +18,10 @@ const interval = setInterval(() => {
     return;
   }
   const image = images.value[i];
-  axios.get(image, {
-    responseType: 'blob'
-  }).then(response => {
-    loadedImages.value.push(URL.createObjectURL(response.data));
+  fetch(image).then(response => {
+    response.blob().then(blob => {
+      loadedImages.value.push(URL.createObjectURL(blob));
+    })
   });
   i++;
 }, 50);

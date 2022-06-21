@@ -2,10 +2,9 @@
   import pButton from '@/components/elements/p-button.vue';
   import sButton from '@/components/elements/s-button.vue';
   import { useRouter } from 'vue-router';
-  import axios from 'axios';
   import bTyper from '@/components/elements/b-typer.vue';
 
-  const subtitles = ((await axios.get('/Subtitles.txt')).data as string).split('\n');
+  const subtitles = (await (await fetch('/Subtitles.txt')).text()).split('\n');
   const router = useRouter();
 </script>
 

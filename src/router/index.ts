@@ -13,14 +13,13 @@ const router = createRouter({
       path: '/:page',
       name: 'pages',
       component: App,
-      children: [
-        {
-          path: 'modal/:modal',
-          name: 'rules',
-          component: App
-        },
-      ]
-    }
+      children: []
+    },
+    {
+      path: '/modal/:modal',
+      name: 'rules',
+      component: App
+    },
   ]
 })
 

@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import axios from 'axios';
 import donoPackage from '@/components/dono-package.vue';
 
-const packagesMD = (await axios.get('/DonationPackages.md')).data as string;
+const packagesMD = await (await fetch('/DonationPackages.md')).text();
 interface packageInfo {
   title: string;
   image: string;
