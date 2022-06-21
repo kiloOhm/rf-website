@@ -183,9 +183,10 @@ const getAnchorClass = (index: number) => {
   return output;
 }
 
+const counterRef = ref();
 let counterTimeout;
 watch(currentIndex, () => {
-  const counter = document.getElementById('counter');
+  const counter = counterRef.value;
   if(!counter) return;
   clearTimeout(counterTimeout);
   counter.style.opacity = '.8';
@@ -197,7 +198,7 @@ watch(currentIndex, () => {
 
 <template>
   <div class="b-carousel">
-    <div id="counter">
+    <div class="counter" ref="counterRef">
       {{currentIndex + 1}}/{{loadedImages.length}}
     </div>
     <div 
@@ -240,7 +241,7 @@ watch(currentIndex, () => {
   align-items: center;
 }
 
-#counter {
+.counter {
   position: absolute;
   top: 10px;
   left: 50%;
