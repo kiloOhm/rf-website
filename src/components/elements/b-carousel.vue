@@ -62,8 +62,14 @@ const loadedImages = ref<string[]>([]);
 
 .slide img {
   width: 100%;
-  height: 100%;
-  max-height: 500px;
+  height: 500px;
+  object-fit: contain;
+}
+
+@media only screen and (max-width: 600px) {
+  .slide img {
+  height: 300px;
+}
 }
 
 .b-carousel :deep() .swiper-pagination-bullet-active-main {

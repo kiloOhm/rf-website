@@ -2,7 +2,6 @@
 import axios from 'axios';
 import { groupBy } from 'lodash';
 import { NCard } from 'naive-ui';
-import { onMounted } from 'vue';
 import bCarousel from '@/components/elements/b-carousel.vue';
 import BCarousel from "../../components/elements/b-carousel.vue";
 
@@ -23,12 +22,6 @@ const sliders = Object.keys(slidersRaw).map((k) => ({
   images: slidersRaw[k].map((s) => '/media/' + s)
 } as slider))
 sliders?.sort((a, b) => (a?.prio ?? 0) - (b?.prio ?? 0))
-const emit = defineEmits(['ready'])
-let init = false;
-onMounted(() => {
-  if(init) return;
-  emit('ready', 'media');
-})
 </script>
 
 <template>
@@ -44,9 +37,9 @@ onMounted(() => {
               <h1>{{ slider.title }}</h1>
             </div>
           </template>
-            <b-carousel
-              :images="slider.images"
-            />
+          <b-carousel
+            :images="slider.images"
+          />
         </n-card>
       </div>
     </div>

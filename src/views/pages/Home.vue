@@ -1,20 +1,12 @@
 <script setup lang="ts">
-  import VueWriter from 'vue-writer';
   import pButton from '@/components/elements/p-button.vue';
   import sButton from '@/components/elements/s-button.vue';
   import { useRouter } from 'vue-router';
-import axios from 'axios';
-import { onMounted } from 'vue';
+  import axios from 'axios';
+  import bTyper from '@/components/elements/b-typer.vue';
 
   const subtitles = ((await axios.get('/Subtitles.txt')).data as string).split('\n');
-
   const router = useRouter();
-  const emit = defineEmits(['ready'])
-let init = false;
-onMounted(() => {
-  if(init) return;
-    emit('ready', 'home');
-  })
 </script>
 
 <template>
@@ -27,6 +19,8 @@ onMounted(() => {
         muted
         loop
         poster="/poster.webp"
+        width="1920"
+        height="1080"
       ></video>
     </div>
     <div class="overlay">
@@ -34,12 +28,11 @@ onMounted(() => {
         <p>Rust Factions</p>
       </div>
       <div class="subtitle">
-        <vue-writer
-          class="text"
-          :array="subtitles"
+        <b-typer
+          :lines="subtitles"
           :typeSpeed="50"
-          :delay="2000"
-          :eraseSpeed="25"
+          :eraseSpeed="50"
+          :delay="1000"
         />
       </div>
       <div class="actions">
@@ -83,6 +76,7 @@ onMounted(() => {
   .subtitle {
     grid-area: s;
     width: 100%;
+    height: 1em;
     padding: 0 5% 0 5%;
     font-size: calc(1.5em + 1vw);
     line-height: 1;

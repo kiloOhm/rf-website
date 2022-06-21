@@ -16,15 +16,14 @@ const props = defineProps<Props>();
 const { pages, activePage, scrollHeight, scrolling } = toRefs(props);
 const emit = defineEmits(['update:activePage']);
 const pageRefs = ref();
-const scrollContainer = () => document.getElementById(props.scrollContainer);
 const getPageIndex = (key: string) => pages.value.findIndex((p) => p.key == key);
 const getPage = (key: string) => pageRefs.value[getPageIndex(key)] as HTMLElement
 const scrollPushed = ref(false);
 watch(router.currentRoute, (newValue) => {
   if(scrolling.value) return;
-  waitUntilReady(() => {
+  setTimeout(() => {
     scrollTo(newValue.params.page);
-  })
+  }, 1000);
 })
 const scrollTo = (newValue) => {
   const ref = getPage(newValue);
@@ -54,25 +53,6 @@ const bg = (i: number) => {
     return `background-color: ${bg1Zebra}`;
   }
 }
-const waitUntilReady = (callback: () => void) => {
-  let allReady = true;
-  for(const p of pages.value) {
-    if(!p.ready) {
-      allReady = false;
-      break;
-    }
-  }
-  if(allReady) {
-    callback?.();
-    return;
-  }
-  setTimeout(() => {
-    waitUntilReady(callback);
-  }, 1000);
-}
-const ready = (key: string) => {
-  pages.value[getPageIndex(key)].ready = true;
-}
 </script>
 
 <template>
@@ -101,7 +81,6 @@ const ready = (key: string) => {
         <Suspense>
           <component 
             :is="page.component" 
-            @ready="(key) => ready(key)"
           />
           <template #fallback>
             <rf-loading />

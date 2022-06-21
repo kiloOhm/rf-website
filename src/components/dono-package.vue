@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { NCard } from 'naive-ui';
 import md from '@/components/render-markdown.vue';
+import { toRefs } from 'vue';
 
 interface Props {
   title: string;
@@ -8,6 +9,7 @@ interface Props {
   text: string;
 }
 const props = defineProps<Props>();
+const {title, image, text} = toRefs(props);
 const newTab = (url: string) => {
   window.open(url, '_blank')?.focus();
 }
@@ -22,14 +24,14 @@ const newTab = (url: string) => {
         <div class="text">
           <md
             :style="'font-size: large; font-weight: 400;'"
-            :markdown="props.text"
+            :markdown="text"
           />
         </div>
         <div 
           class="h-background"
-          :style="`background-image: url(${props.image});`"
+          :style="`background-image: url(${image});`"
         ></div>
-        <h1 class="header">{{ props.title }}</h1>
+        <h1 class="header">{{ title }}</h1>
       </template>
       <template #footer>
         

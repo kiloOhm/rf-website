@@ -1,14 +1,3 @@
-<script setup lang="ts">
-import { nextTick, onMounted, onUpdated } from 'vue';
-
-const emit = defineEmits(['ready'])
-let init = false;
-onMounted(() => {
-  if(init) return;
-  emit('ready', 'contact');
-})
-</script>
-
 <template>
   <div class="contact">
     <iframe 

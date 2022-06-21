@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import axios from 'axios';
 import { NCard, NAvatar, NTag, NBadge } from 'naive-ui';
-import { onMounted, reactive } from 'vue';
+import { reactive } from 'vue';
 import pButton from '@/components/elements/p-button.vue';
 import sButton from '@/components/elements/s-button.vue';
 import md from '@/components/render-markdown.vue';
@@ -47,13 +47,6 @@ const newTab = (url: string | undefined) => {
 const connectLink = (ip: string | undefined) => {
   return `steam://connect/${ip}`;
 }
-
-const emit = defineEmits(['ready'])
-let init = false;
-onMounted(() => {
-  if(init) return;
-  emit('ready', 'servers');
-})
 </script>
 
 <template>
@@ -83,14 +76,25 @@ onMounted(() => {
       <template #footer>
         <div 
           class="footer"
+        >
+        <div class="online"
           v-if="server.up"
         >
-        <div class="online">
           <n-tag 
             type="success"
             round
           >
             Online
+          </n-tag>
+        </div>
+        <div class="offline"
+          v-else
+        >
+          <n-tag 
+            type="error"
+            round
+          >
+            Offline
           </n-tag>
         </div>
           <n-badge 
@@ -181,6 +185,7 @@ onMounted(() => {
 .card {
   width: 400px;
   max-width: 90vw;
+  height: 510px;
 }
 
 .card :deep() .n-card-header {

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import VueWriter from 'vue-writer';
+  import bTyper from './b-typer.vue';
 </script>
 
 <template>
@@ -8,10 +8,10 @@
       <img alt="loading" class="loading" src="@/assets/lavalamp.svg" />
       <div class="text">
         <p>loading</p>
-        <vue-writer
-          :array="['...']"
-          :typeSpeed="200"
-          :eraseSpeed="200"
+        <b-typer
+          :lines="['loading...']"
+          :typeSpeed="50"
+          :eraseSpeed="50"
           :delay="1000"
         />
       </div>

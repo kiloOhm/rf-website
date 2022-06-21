@@ -41,5 +41,6 @@ const doScrollToTop = () => {
   align-items: center;
   border-radius: 50%;
   cursor: pointer;
+  z-index: 100;
 }
 </style>

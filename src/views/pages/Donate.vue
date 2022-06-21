@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import axios from 'axios';
-import { onMounted } from 'vue';
 import donoPackage from '@/components/dono-package.vue';
 
 const packagesMD = (await axios.get('/DonationPackages.md')).data as string;
@@ -17,13 +16,6 @@ const packages = packagesMD.split('#').filter((p) => p).map((p) => {
     text: lines.join('\n'),
   } as packageInfo
 });
-
-const emit = defineEmits(['ready']);
-let init = false;
-onMounted(() => {
-  if(init) return;
-  emit('ready', 'donate');
-})
 </script>
 
 <template>
