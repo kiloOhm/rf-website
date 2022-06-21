@@ -78,7 +78,6 @@ let mousePosition = 0;
 let previousX = 0;
 let start: Date;
 const touchStart = (e: TouchEvent) => {
-  e.preventDefault();
   document.addEventListener('touchmove', touchMove);
   document.addEventListener('touchend', touchEnd);
 
