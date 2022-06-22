@@ -11,10 +11,14 @@ const packages = packagesMD.split('#').filter((p) => p).map((p) => {
   const lines = p.split('\n');
   return {
     title: lines.shift(),
-    image: lines.shift()?.match(/(?<=\().*(?=\))/)?.[0] ?? '',
+    image: extractLinkFromMdImg(lines.shift() ?? ''),
     text: lines.join('\n'),
   } as packageInfo
 });
+
+function extractLinkFromMdImg(md: string) {
+  return md.substring(md.lastIndexOf('(') + 1, md.lastIndexOf(')'));
+}
 </script>
 
 <template>
