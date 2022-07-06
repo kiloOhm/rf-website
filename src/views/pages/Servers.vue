@@ -5,6 +5,7 @@ import pButton from '@/components/elements/p-button.vue';
 import sButton from '@/components/elements/s-button.vue';
 import md from '@/components/render-markdown.vue';
 import bCard from '@/components/elements/b-card.vue';
+import axios from 'axios';
 
 interface ServerInfo {
   name: string;
@@ -18,11 +19,34 @@ interface ServerInfo {
   sleepers: number | undefined;
 }
 
+async function postData(url = '', data = {}) {
+  // Default options are marked with *
+  const response = await fetch(url, {
+    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+    mode: 'cors', // no-cors, *cors, same-origin
+    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: 'same-origin', // include, *same-origin, omit
+    headers: {
+      'Content-Type': 'application/json'
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    redirect: 'follow', // manual, *follow, error
+    referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+    body: JSON.stringify(data) // body data type must match "Content-Type" header
+  });
+  return response.json(); // parses JSON response into native JavaScript objects
+}
+
 const servers = await (await fetch('/Servers.json')).json() as ServerInfo[];
 const _servers = reactive(servers);
 try {
-  fetch('https://rf-backend.onrender.com').then(async (response) =>{
-    const json = await response.json();
+  axios.post("https://rf-backend.onrender.com",
+      {
+        servers: Object.fromEntries(servers.map((s) => [s.name, s.ip]))
+      }
+    ).then(async (response) =>{
+    const json = response.data;
+    console.log(json);
     for(const s of _servers) {
     try {
       if(s.name in json) {
