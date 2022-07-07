@@ -27,6 +27,17 @@ sliders.map(() => indices.push(ref(0)))
 
 <template>
   <div class="media" ref="pageRef">
+    <b-card
+      class="card"
+    >
+      <iframe
+        src="https://www.youtube.com/embed/kkRkaxFFTeI" 
+        title="YouTube video player" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen
+      ></iframe>
+    </b-card>
     <div class="carousels">
       <b-card
       class="card"
@@ -53,9 +64,22 @@ sliders.map(() => indices.push(ref(0)))
 
 <style scoped>
 
+.media {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+}
+
 .card {
   padding: 0;
   margin: 0;
+}
+
+.card iframe {
+  width: 100%;
+  aspect-ratio: 16/9;
 }
 
 @media only screen and (min-width: 600px) {
