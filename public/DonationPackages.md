@@ -14,7 +14,7 @@
 # Silver
 ![silver](/donation_packages/silver.webp)
 
-• Supporter kit on applicable servers
+• Better supporter kit on applicable servers
 
 • Bypass game server queue
 
@@ -55,7 +55,7 @@
 
 • Better supporter kit on applicable servers
 
-• More supporter crafting abilities
+• All supporter crafting abilities
 
 • Allows the stacking of 4 boxes
 
