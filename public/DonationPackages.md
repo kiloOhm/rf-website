@@ -1,51 +1,75 @@
 # Bronze
 ![bronze](/donation_packages/bronze.webp)
 
-- donator tag on server and Discord
-- access to Discord donator chat
-- preview of next era's map
+• Supporter tag on server and Discord
+
+• Access to Discord supporter chat
+
+   • Preview of next era's map
+
+   • Preview upcoming features and events
+
+• Supporter kit on applicable servers
 
 # Silver
 ![silver](/donation_packages/silver.webp)
 
-- everything from bronze
-- 2x multiplier to RP (Reward Points)
-- Use of external emoji's in Discord
-- Bypass game server queue
-- Unlocks donator tab in the /shop
-- Ability to use frame boxes
-- Allows the stacking of 3 boxes
+• Better supporter kit on applicable servers
+
+• Bypass game server queue
+
+• Skin tools using our skinbox
+
+• Supporter crafting abilities
+
+• Use of external emoji's in Discord
+
+• Ability to use frame boxes
+
+• Allows the stacking of 2 boxes
 
 # Gold
 ![gold](/donation_packages/gold.webp)
 
-- everything from silver
-- 3x multiplier to RP (Reward Points)
-- Unlocks donator tab in the /shop
-- Access to the tree planter plugin
-- Skin weapons with our /skinbox
-- Unlocks donator+ tab in the /shop
-- Adds StatTrak to crafted weapons
+• All benefits from lower tier packages
+
+• Better supporter kit on applicable servers
+
+• More supporter crafting abilities
+
+• Allows the stacking of 3 boxes
+
+• Skin weapons with our /skinbox
+
+• Adds StatTrak to crafted weapons
 
 # Ruby
 ![ruby](/donation_packages/ruby.webp)
 
-- everything from gold
-- 4x multiplier to RP (Reward Points)
-- Unlocks donator+ tab in the /shop
-- Grants epic donator tier!
+• All benefits from lower tier packages
+
+• Better supporter kit on applicable servers
+
+• More supporter crafting abilities
+
+• Tree and bush crafting abilities
 
 # Emerald
 ![emerald](/donation_packages/emerald.webp)
 
-- everything from ruby
-- 5x multiplier to RP (Reward Points)
-- Faction text and voice Discord channels
+• All benefits from lower tier packages
+
+• Better supporter kit on applicable servers
+
+• All supporter crafting abilities
+
+• Allows the stacking of 4 boxes
 
 # Diamond
 ![diamond](/donation_packages/diamond.webp)
 
-- everything from emerald
-- 10x multiplier to RP (Reward Points)
-- Allows the stacking of 4 boxes
-- try events before the rest of the server
+• All benefits from lower tier packages
+
+• Best supporter kit on applicable servers
+
+• Special behind the scenes access
