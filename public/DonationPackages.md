@@ -31,6 +31,8 @@
 # Gold
 ![gold](/donation_packages/gold.webp)
 
+• All benefits from lower tier packages
+
 • Better supporter kit on applicable servers
 
 • More supporter crafting abilities
@@ -44,6 +46,8 @@
 # Ruby
 ![ruby](/donation_packages/ruby.webp)
 
+• All benefits from lower tier packages
+
 • Better supporter kit on applicable servers
 
 • More supporter crafting abilities
@@ -52,6 +56,8 @@
 
 # Emerald
 ![emerald](/donation_packages/emerald.webp)
+
+• All benefits from lower tier packages
 
 • Better supporter kit on applicable servers
 
@@ -62,7 +68,7 @@
 # Diamond
 ![diamond](/donation_packages/diamond.webp)
 
-• All perks from below tiers
+• All benefits from lower tier packages
 
 • Best supporter kit on applicable servers
 
