@@ -23,7 +23,7 @@ function extractLinkFromMdImg(md: string) {
 
 <template>
   <div class="donate">
-    <p>This server is run by volunteers who invest their own time and money to give you the ultimate Rust Roleplay experience. If you want to help us keep the lights on, please concider donating.</p>
+    <p>This server is run by volunteers who invest their own time and money to give you the ultimate Rust experience. If you'd like to help us keep the lights on, please consider purchasing a package!</p>
     <div class="packages">
       <dono-package
         v-for="(p, index) in packages"
@@ -33,7 +33,7 @@ function extractLinkFromMdImg(md: string) {
         :text="p.text"
       />
     </div>
-    <p>Thanks for all your support!</p>
+    <p>We greatly appreciate all of your support!</p>
   </div>
 </template>
 
