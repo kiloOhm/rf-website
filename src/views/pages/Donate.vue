@@ -5,18 +5,20 @@ const packagesMD = await (await fetch('/DonationPackages.md')).text();
 interface packageInfo {
   title: string;
   image: string;
+  url: string;
   text: string;
 }
 const packages = packagesMD.split('#').filter((p) => p).map((p) => {
   const lines = p.split('\n');
   return {
     title: lines.shift(),
-    image: extractLinkFromMdImg(lines.shift() ?? ''),
+    image: extractLinkFromMdLink(lines.shift() ?? ''),
+    url: extractLinkFromMdLink(lines.shift() ?? ''),
     text: lines.join('\n'),
   } as packageInfo
 });
 
-function extractLinkFromMdImg(md: string) {
+function extractLinkFromMdLink(md: string) {
   return md.substring(md.lastIndexOf('(') + 1, md.lastIndexOf(')'));
 }
 </script>
@@ -30,6 +32,7 @@ function extractLinkFromMdImg(md: string) {
         :key="index"
         :title="p.title"
         :image="p.image"
+        :url="p.url"
         :text="p.text"
       />
     </div>

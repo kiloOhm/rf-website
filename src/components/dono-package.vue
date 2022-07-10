@@ -6,6 +6,7 @@ import bCard from '@/components/elements/b-card.vue';
 interface Props {
   title: string;
   image: string;
+  url?: string;
   text: string;
 }
 const props = defineProps<Props>();
@@ -35,7 +36,7 @@ const newTab = (url: string) => {
       </template>
       <template #action>
         <div class="tebex"
-          @click="newTab('https://rustfactions.tebex.io/')"
+          @click="newTab(url ?? 'https://store.rustfactions.io')"
         >
           <p>view on </p>
           <img width="138.4" height="14.2" src="../assets/tebex.svg" alt="Tebex Webstore">

@@ -1,18 +1,20 @@
 # Bronze
 ![bronze](/donation_packages/bronze.webp)
+[bronze](https://store.rustfactions.io/package/4745492)
 
 • Supporter tag on server and Discord
 
 • Access to Discord supporter chat
 
-   • Preview of next era's map
+• Preview of next era's map
 
-   • Preview upcoming features and events
+• Preview upcoming features and events
 
 • Supporter kit on applicable servers
 
 # Silver
 ![silver](/donation_packages/silver.webp)
+[silver](https://store.rustfactions.io/package/4737001)
 
 • Better supporter kit on applicable servers
 
@@ -30,6 +32,7 @@
 
 # Gold
 ![gold](/donation_packages/gold.webp)
+[gold](https://store.rustfactions.io/package/4745486)
 
 • All benefits from lower tier packages
 
@@ -45,6 +48,7 @@
 
 # Ruby
 ![ruby](/donation_packages/ruby.webp)
+[ruby](https://store.rustfactions.io/package/4745497)
 
 • All benefits from lower tier packages
 
@@ -56,6 +60,7 @@
 
 # Emerald
 ![emerald](/donation_packages/emerald.webp)
+[emerald](https://store.rustfactions.io/package/4745494)
 
 • All benefits from lower tier packages
 
@@ -67,6 +72,7 @@
 
 # Diamond
 ![diamond](/donation_packages/diamond.webp)
+[diamond](https://store.rustfactions.io/package/4919717)
 
 • All benefits from lower tier packages
 
