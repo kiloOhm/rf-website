@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { toRefs, ref, type CSSProperties, computed, watch } from 'vue';
 
-
 interface Props {
   images: string[];
   transitionDuration?: number;
@@ -66,7 +65,9 @@ const nearestIndex = (pos: number) => {
   let index = 0;
   for(let i = 0; i < snapPoints.value.length; i++) {
     const p = snapPoints.value[i];
-    if(Math.abs(p + pos) < Math.abs(nearest + pos)) {
+    const newDistance = Math.abs(p + pos);
+    const currentDistance = Math.abs(nearest + pos);
+    if(newDistance < currentDistance) {
       nearest = p;
       index = i;
     }
@@ -148,8 +149,7 @@ const touchEnd = (e: TouchEvent) => {
 const up = (target: HTMLElement) => {
   target.style.cursor = 'grab';
   target.style.removeProperty('user-select');
-
-  const elapsedMS = new Date().getMilliseconds() - start.getMilliseconds();
+  const elapsedMS = new Date().getTime() - start.getTime();
   const distance = previousX - x.value;
   const velocity = distance / elapsedMS
   if(velocity > (velocityThreshold?.value ?? .8)) {

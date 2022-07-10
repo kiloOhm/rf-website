@@ -46,7 +46,6 @@ try {
       }
     ).then(async (response) =>{
     const json = response.data;
-    console.log(json);
     for(const s of _servers) {
     try {
       if(s.name in json) {
