@@ -23,15 +23,6 @@ const sliders = Object.keys(slidersRaw).map((k) => ({
 sliders?.sort((a, b) => (a?.prio ?? 0) - (b?.prio ?? 0))
 const indices: Ref<number>[] = [];
 sliders.map(() => indices.push(ref(0)))
-
-const ytRef = ref(null);
-watch(ytRef, (v: any) => {
-  if (v) {
-    if(v.getAttribute('data-src')) {
-      setTimeout(() => v.setAttribute('src', v.getAttribute('data-src')), 100);
-    } 
-  }
-});
 </script>
 
 <template>
@@ -40,10 +31,9 @@ watch(ytRef, (v: any) => {
       class="card"
     >
       <iframe
-        ref="ytRef"
         title="Server Trailer"
-        src=""
-        data-src="https://www.youtube.com/embed/iM9KTEOKP9w" 
+        src="https://www.youtube.com/embed/iM9KTEOKP9w" 
+        loading="lazy"
         frameborder="0" 
         allowfullscreen
       ></iframe>
