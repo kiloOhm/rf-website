@@ -2,7 +2,7 @@
 import groupBy from 'lodash.groupby';
 import bCarousel from '@/components/elements/b-carousel.vue';
 import bCard from '@/components/elements/b-card.vue';
-import { ref, type Ref } from 'vue';
+import { nextTick, ref, vModelText, watch, type Ref } from 'vue';
 
 const index = (await (await fetch('/media/index.txt')).text())?.replaceAll('\r', '').replaceAll('public/media/', '') as string;
 const lines = index.split('\n').filter((l) => l);
@@ -23,6 +23,15 @@ const sliders = Object.keys(slidersRaw).map((k) => ({
 sliders?.sort((a, b) => (a?.prio ?? 0) - (b?.prio ?? 0))
 const indices: Ref<number>[] = [];
 sliders.map(() => indices.push(ref(0)))
+
+const ytRef = ref(null);
+watch(ytRef, (v: any) => {
+  if (v) {
+    if(v.getAttribute('data-src')) {
+      nextTick(() => v.setAttribute('src', v.getAttribute('data-src')));
+    } 
+  }
+});
 </script>
 
 <template>
@@ -31,10 +40,10 @@ sliders.map(() => indices.push(ref(0)))
       class="card"
     >
       <iframe
-        src="https://www.youtube.com/embed/iM9KTEOKP9w" 
-        title="YouTube video player" 
+        ref="ytRef"
+        src=""
+        data-src="https://www.youtube.com/embed/iM9KTEOKP9w" 
         frameborder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
         allowfullscreen
       ></iframe>
     </b-card>

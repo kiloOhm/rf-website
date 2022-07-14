@@ -39,30 +39,32 @@ async function postData(url = '', data = {}) {
 
 const servers = await (await fetch('/Servers.json')).json() as ServerInfo[];
 const _servers = reactive(servers);
-try {
-  axios.post("https://rf-backend.onrender.com",
-      {
-        servers: Object.fromEntries(servers.map((s) => [s.name, s.ip]))
+for(const server of _servers) {
+  try {
+    axios.post("https://rf-backend.onrender.com",
+        {
+          servers: Object.fromEntries([[server.name, server.ip]])
+        }
+      ).then(async (response) =>{
+      const json = response.data;
+      for(const s of _servers) {
+      try {
+        if(s.name in json) {
+          s.up = true;
+        }
+        const data = json[s.name];
+        s.players = data.players
+        s.maxPlayers = data.maxplayers
+        s.sleepers = data.sleepers
       }
-    ).then(async (response) =>{
-    const json = response.data;
-    for(const s of _servers) {
-    try {
-      if(s.name in json) {
-        s.up = true;
-      }
-      const data = json[s.name];
-      s.players = data.players
-      s.maxPlayers = data.maxplayers
-      s.sleepers = data.sleepers
+      // eslint-disable-next-line no-empty    
+      catch (err) {}
     }
-    // eslint-disable-next-line no-empty    
-    catch (err) {}
+    })
   }
-  })
+  // eslint-disable-next-line no-empty    
+  catch(err) {}
 }
-// eslint-disable-next-line no-empty    
-catch(err) {}
 
 const newTab = (url: string | undefined) => {
   window.open(url, '_blank')?.focus();
@@ -108,10 +110,9 @@ const connectLink = (ip: string | undefined) => {
           v-else
         >
           <n-tag 
-            type="error"
             round
           >
-            Offline
+            no connection
           </n-tag>
         </div>
           <n-badge 
