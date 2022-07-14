@@ -28,7 +28,7 @@ const ytRef = ref(null);
 watch(ytRef, (v: any) => {
   if (v) {
     if(v.getAttribute('data-src')) {
-      nextTick(() => v.setAttribute('src', v.getAttribute('data-src')));
+      setTimeout(() => v.setAttribute('src', v.getAttribute('data-src')), 100);
     } 
   }
 });
@@ -41,6 +41,7 @@ watch(ytRef, (v: any) => {
     >
       <iframe
         ref="ytRef"
+        title="Server Trailer"
         src=""
         data-src="https://www.youtube.com/embed/iM9KTEOKP9w" 
         frameborder="0" 
