@@ -1,13 +1,6 @@
 # RF Website Usage Manual
 
-This website is hosted for free at [Render.com](https://render.com)
-
 Any changes that are committed to the **master** branch of this repository will be automatically applied after a couple of minutes
-
----
-There is a secondary branch called **develop**. This branch is hosted [here](https://rf-website-pr-1.onrender.com)
-
-Any changes that are committed to this branche will also be applied automatically
 
 ## Making changes
 
